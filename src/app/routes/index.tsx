@@ -5,13 +5,16 @@ import { Outlet } from 'react-router-dom';
 import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
 import SignIn from '../../features/SignIn';
+import { useState } from 'react';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={{ position: 'relative', maxWidth: '1920px' }}>
-        <Header />
+        <Header isLoggedIn={isLoggedIn} />
         <Box>
           <Outlet />
         </Box>

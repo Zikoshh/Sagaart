@@ -3,4 +3,34 @@ const logoSize = {
   height: '134px',
 };
 
-export { logoSize };
+const navLinksData = [
+  { rout: '/main', text: 'Главная' },
+  { rout: '/catalog', text: 'Каталог' },
+  { rout: '/appraisal', text: 'Честная оценка' },
+  { rout: '/pricing', text: 'Ценообразование' },
+  { rout: '/consultation', text: 'Арт-консультация' },
+  { rout: '/news', text: 'Новости' },
+];
+
+const signInButton = {
+  text: 'Вход',
+  bgColor: 'white',
+  padding: '16px 0',
+  fontSize: '24px',
+  lineHeight: '33.6px',
+  width: '140px',
+  color: '#252525',
+  borderColor: '#757575',
+};
+
+const signUpButton = {
+  text: 'Регистрация',
+  bgColor: '#252525',
+  padding: '16px 0',
+  fontSize: '24px',
+  lineHeight: '33.6px',
+  width: '232px',
+  color: 'white',
+};
+
+export { logoSize, navLinksData, signInButton, signUpButton };
