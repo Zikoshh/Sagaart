@@ -103,7 +103,30 @@ const Header: FC<HeaderProps> = ({ isLoggedIn }) => {
         )}
       </Box>
     </Box>
-  );
+   </Box>
+   <Box sx={{ display: "flex", alignItems: "flex-start", columnGap: "12px" }}>
+    <Button
+     text="Вход"
+     bgColor="white"
+     padding="16px 0"
+     fontSize="24px"
+     lineHeight="33.6px"
+     width="140px"
+     color="#252525"
+     borderColor="#757575"
+    />
+    <Button
+     text="Регистрация"
+     bgColor="#252525"
+     padding="16px 0"
+     fontSize="24px"
+     lineHeight="33.6px"
+     width="232px"
+     color="white"
+    />
+   </Box>
+  </Box>
+ );
 };
 
 export default Header;

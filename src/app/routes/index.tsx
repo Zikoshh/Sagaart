@@ -6,6 +6,7 @@ import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
 import SignIn from '../../features/SignIn';
 import { useState } from 'react';
+import MainContent from "../../components/MainContent/MainContent.jsx";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -18,6 +19,7 @@ const App = () => {
         <Box>
           <Outlet />
         </Box>
+        <MainContent />
         <Footer />
         {false ? <SignIn /> : ''}
       </Box>
