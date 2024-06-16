@@ -10,7 +10,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'relative', maxWidth: '1920px' }}>
         <Header />
         <Box>
           <Outlet />
