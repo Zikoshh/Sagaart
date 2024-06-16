@@ -15,6 +15,8 @@ const router = createBrowserRouter([
         path: 'catalog',
         element: <Catalog />,
       },
+      { path: 'appraisal' },
+      { path: 'pricing' },
       { path: 'consultation' },
       { path: 'news' },
       { path: ':artId' },
