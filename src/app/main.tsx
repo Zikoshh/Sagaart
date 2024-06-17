@@ -16,8 +16,30 @@ const router = createBrowserRouter([
       {
         path: 'catalog',
         element: <Catalog />,
+        children: [
+          {
+            path: 'painting',
+          },
+          {
+            path: 'graphics',
+          },
+          {
+            path: 'artists',
+          },
+          {
+            path: 'photography',
+          },
+          {
+            path: 'digital',
+          },
+          {
+            path: 'prints',
+          },
+          {
+            path: 'styles',
+          },
+        ],
       },
-      { path: 'appraisal' },
       { path: 'pricing' },
       { path: 'consultation' },
       { path: 'news' },
@@ -35,6 +57,7 @@ const router = createBrowserRouter([
           { path: 'favorite-artists' },
           { path: 'favorites' },
           { path: 'payment-methods' },
+          { path: 'settings' },
         ],
       },
     ],

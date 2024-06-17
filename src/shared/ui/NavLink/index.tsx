@@ -4,13 +4,21 @@ import './NavLink.css';
 import { FC } from 'react';
 
 interface NavLinkProps {
-  rout: string;
+  route: string;
   text: string;
+  alwaysActive?: boolean;
 }
 
-const NavLink: FC<NavLinkProps> = ({ rout, text }) => {
+const NavLink: FC<NavLinkProps> = ({ route, text, alwaysActive }) => {
   return (
-    <Link className={({ isActive }) => (isActive ? 'active' : '')} to={rout}>
+    <Link
+      className={({ isActive }) =>
+        isActive
+          ? 'link link__active'
+          : `${alwaysActive ? 'link link__active' : 'link'}`
+      }
+      to={route}
+    >
       <Typography
         sx={{
           fontWeight: 'inherit',

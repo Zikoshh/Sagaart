@@ -49,7 +49,7 @@ const Header: FC<HeaderProps> = ({ isLoggedIn }) => {
             }}
           >
             {navLinksData.map((link, i) => {
-              return <NavLink key={i} rout={link.rout} text={link.text} />;
+              return <NavLink key={i} route={link.rout} text={link.text} />;
             })}
           </Box>
         </Box>
@@ -67,7 +67,7 @@ const Header: FC<HeaderProps> = ({ isLoggedIn }) => {
             <Link to='/cart'>
               <IconButton
                 SvgIcon={CartIcon}
-                isBasket={true}
+                isCart={true}
                 numberOfProducts={'2'}
               />
             </Link>
