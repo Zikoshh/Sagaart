@@ -33,6 +33,7 @@ const Button: FC<ButtonProps> = ({
         width: `${width}`,
         color: `${color}`,
         borderColor: `${borderColor ? borderColor : '#252525'}`,
+        textTransform: 'none',
         ':hover': {
           backgroundColor: `${bgColor}`,
         },

@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import App from './routes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Catalog from './routes/catalog';
+import MainContent from './routes/main';
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'main',
+        element: <MainContent />,
       },
       {
         path: 'catalog',
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
       { path: 'consultation' },
       { path: 'news' },
       { path: ':artId' },
-      { path: 'basket' },
+      { path: 'cart' },
       {
         path: 'profile',
         children: [
