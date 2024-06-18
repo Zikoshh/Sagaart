@@ -67,6 +67,7 @@
  display: grid;
  grid-template-columns: 1fr 1fr 1fr 1fr;
  margin: 36px 0px 0px 80px;
+ grid-row-gap: 35px;
  /* margin: 36px 80px 0px 80px;
  display: flex;
  flex-wrap: wrap;
