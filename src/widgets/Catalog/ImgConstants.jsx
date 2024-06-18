@@ -1,5 +1,3 @@
-// import { ReactComponent as WarFlowers } from "src/widgets/Catalog/assets/Цветы войны.jpg";
-// import warFlowers from "src/widgets/Catalog/assets/warFlowers.jpg";
 import warFlowers from "./assets/warFlowers.jpg";
 import AirSpace from "./assets/AirSpace.jpg";
 import carCulture from "./assets/carCulture.jpg";
