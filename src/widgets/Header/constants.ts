@@ -4,7 +4,7 @@ const logoSize = {
 };
 
 const navLinksData = [
-  { rout: '/main', text: 'Главная' },
+  { rout: '/', text: 'Главная' },
   { rout: '/catalog', text: 'Каталог' },
   { rout: '/appraisal', text: 'Честная оценка' },
   { rout: '/pricing', text: 'Ценообразование' },

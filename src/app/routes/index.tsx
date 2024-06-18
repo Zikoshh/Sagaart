@@ -4,7 +4,7 @@ import '../fonts/Inter/inter.css';
 import { Outlet } from 'react-router-dom';
 import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
-import SignIn from '../../features/SignIn';
+import SignUp from '../../features/SignUp';
 import { useState } from 'react';
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
           <Outlet />
         </Box>
         <Footer />
-        {false ? <SignIn /> : ''}
+        {true ? <SignUp /> : ''}
       </Box>
     </ThemeProvider>
   );
