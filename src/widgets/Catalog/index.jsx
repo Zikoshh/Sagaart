@@ -265,6 +265,19 @@ const CatalogContent = () => {
       </div>
      </div>
     </div>
+    <div className="catalog__navigation">
+     {/* <img src={ImgConstants.chevronRight} alt="" /> */}
+     <button className="catalog__navigate-arrow"></button>
+     <div className="catalog__navigation-pages">
+      <button className="catalog__navigation-page">1</button>
+      <button className="catalog__navigation-page">2</button>
+      <button className="catalog__navigation-page">3</button>
+      <button className="catalog__navigation-page">4</button>
+      <button className="catalog__navigation-page">...</button>
+      <button className="catalog__navigation-page">100</button>
+     </div>
+     <button className="catalog__navigate-arrow catalog__navigate-arrow2"></button>
+    </div>
    </div>
   </Box>
  );

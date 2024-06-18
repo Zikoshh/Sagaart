@@ -15,6 +15,8 @@ import sorryBook from "./assets/sorryBook.jpg/";
 import treesForce from "./assets/treesForce.jpg/";
 import way from "./assets/way.jpg/";
 import chaos from "./assets/chaos.jpg/";
+import chevronLeft from "./assets/chevronLeft.svg/";
+import chevronRight from "./assets/chevronRight.svg/";
 export default {
  warFlowers: warFlowers,
  AirSpace: AirSpace,
@@ -33,4 +35,6 @@ export default {
  treesForce: treesForce,
  way: way,
  chaos: chaos,
+ chevronLeft: chevronLeft,
+ chevronRight: chevronRight,
 };
