@@ -3,6 +3,8 @@ import { Box } from "@mui/material";
 import IconButton from "../../shared/ui/IconButton";
 import Arrow from "./assets/arrow-forward.svg?react";
 import FilterIcon from "./assets/whh_settingsandroid.svg?react";
+// import Assets from "./constants";
+import ImgConstants from "./ImgConstants";
 
 const CatalogContent = () => {
  return (
@@ -42,7 +44,8 @@ const CatalogContent = () => {
     </div>
     <div className="catalog__content">
      <div className="catalog__image">
-      <img src="./assets/цветы войны" alt="" />
+      {/* <img src="src\widgets\Catalog\assets\Цветы войны.jpg" alt="Цветы войны" /> */}
+      <img src={ImgConstants.warFlowers} alt="" />
       <h2 className="catalog__image-author"></h2>
       <p className="catalog__image-title"></p>
       <h2 className="catalog__image-orginals"></h2>

@@ -38,18 +38,27 @@
 .catalog__filter-orientation {
  width: 212px;
 }
+
 .catalog__filter-type {
  width: 193px;
 }
+
 .catalog__filter-style {
  width: 153px;
 }
+
 .catalog__filter-color {
  width: 141px;
 }
+
 .catalog__filters-area {
  display: grid;
  align-content: stretch;
  grid-auto-flow: column;
  grid-gap: 33px;
+}
+
+.catalog__filter-recomended {
+ display: grid;
+ grid-auto-flow: column;
 }
