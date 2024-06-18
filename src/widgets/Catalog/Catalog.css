@@ -64,12 +64,14 @@
 }
 
 .catalog__content {
- /* display: grid;
- grid-template-columns: 1fr 1fr 1fr 1fr;  */
- margin: 36px 80px 0px 80px;
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr 1fr;
+ margin: 36px 0px 0px 80px;
+ /* margin: 36px 80px 0px 80px;
  display: flex;
  flex-wrap: wrap;
  justify-content: space-between;
+ grid-gap: 30px; */
 }
 
 .catalog__image-grid {
