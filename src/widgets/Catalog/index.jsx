@@ -257,7 +257,7 @@ const CatalogContent = () => {
       <p className="catalog__image-title">Падение</p>
       <div className="catalog__image-pricing">
        <h2 className="catalog__image-orginals">оригинал</h2>
-       <p className="catalog__image-price">+0 000 ₽</p>
+       <p className="catalog__image-price">90 000 ₽</p>
       </div>
       <div className="catalog__image-pricing">
        <p className="catalog__image-style">Принт</p>
