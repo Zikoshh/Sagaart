@@ -9,6 +9,7 @@ import { useState } from 'react';
 import SignIn from '../../features/SignIn';
 
 const App = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isSignInOpen, setIsSignInOpen] = useState(false);
