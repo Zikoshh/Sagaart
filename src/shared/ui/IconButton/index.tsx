@@ -3,18 +3,18 @@ import { FC } from 'react';
 
 interface IconButtonProps {
   SvgIcon: any;
-  isBasket?: boolean;
+  isCart?: boolean;
   numberOfProducts?: string;
 }
 
 const IconButton: FC<IconButtonProps> = ({
   SvgIcon,
-  isBasket,
+  isCart,
   numberOfProducts,
 }) => {
   return (
     <MuiIconButton sx={{ padding: '0', position: 'relative' }}>
-      {isBasket ? (
+      {isCart ? (
         <Box
           sx={{
             position: 'absolute',

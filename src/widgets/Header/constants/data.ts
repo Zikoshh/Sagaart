@@ -4,13 +4,19 @@ const logoSize = {
 };
 
 const navLinksData = [
-  { rout: '/main', text: 'Главная' },
+  { rout: '/', text: 'Главная' },
   { rout: '/catalog', text: 'Каталог' },
   { rout: '/appraisal', text: 'Честная оценка' },
   { rout: '/pricing', text: 'Ценообразование' },
   { rout: '/consultation', text: 'Арт-консультация' },
   { rout: '/news', text: 'Новости' },
 ];
+
+const navButtonsRoutes = {
+  cart: '/cart',
+  favorite: '/profile/favorites',
+  profile: '/profile',
+};
 
 const signInButton = {
   text: 'Вход',
@@ -33,4 +39,4 @@ const signUpButton = {
   color: 'white',
 };
 
-export { logoSize, navLinksData, signInButton, signUpButton };
+export { logoSize, navLinksData, navButtonsRoutes, signInButton, signUpButton };

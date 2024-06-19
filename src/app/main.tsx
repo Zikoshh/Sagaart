@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import App from './routes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Catalog from './routes/catalog';
+import Main from './routes/main';
 
 const router = createBrowserRouter([
   {
@@ -9,23 +10,46 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: 'main',
+        path: '/',
+        element: <Main />,
       },
       {
         path: 'catalog',
         element: <Catalog />,
+        children: [
+          {
+            path: 'painting',
+          },
+          {
+            path: 'graphics',
+          },
+          {
+            path: 'artists',
+          },
+          {
+            path: 'photography',
+          },
+          {
+            path: 'digital',
+          },
+          {
+            path: 'prints',
+          },
+          {
+            path: 'styles',
+          },
+        ],
       },
-      { path: 'appraisal' },
       { path: 'pricing' },
       { path: 'consultation' },
       { path: 'news' },
       { path: ':artId' },
-      { path: 'basket' },
+      { path: 'cart' },
       {
         path: 'profile',
         children: [
           {
-            path: 'main',
+            path: '/profile',
           },
           { path: 'subscription' },
           { path: 'on-sale' },
@@ -33,6 +57,7 @@ const router = createBrowserRouter([
           { path: 'favorite-artists' },
           { path: 'favorites' },
           { path: 'payment-methods' },
+          { path: 'settings' },
         ],
       },
     ],
