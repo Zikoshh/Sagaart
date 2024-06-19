@@ -26,7 +26,7 @@ const FormInput: FC<FormInputProps> = ({ label, placeholder, name }) => {
           fontSize: '24px',
           fontWeight: '400',
           lineHeight: '33.6px',
-          color: '#D5D5D5',
+          color: '#252525',
           '& .MuiOutlinedInput-input': {
             padding: '13px 0 13px 24px',
           },

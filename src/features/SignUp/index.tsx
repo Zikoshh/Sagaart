@@ -1,16 +1,17 @@
+import { Dispatch, FC, SetStateAction, useState } from 'react';
+
 import {
   Box,
+  Checkbox,
   IconButton,
   InputLabel,
   MenuItem,
   Select,
   Typography,
 } from '@mui/material';
-import Logo from '../../shared/ui/Logo';
 import {
   logoSize,
   title,
-  styles,
   selectData,
   signUpButton,
   orText,
@@ -19,71 +20,78 @@ import {
   googleButton,
   yetFirstPart,
   yetSecondPart,
-} from './constants';
+  inputsData,
+} from './constants/data';
+import styles from './constants/styles';
+
 import CloseIcon from './assets/close.svg?react';
-import FormInput from '../../shared/ui/FormInput';
-import { useState } from 'react';
-import Button from '../../shared/ui/Button';
-import Checkbox from '../../shared/ui/Checkbox';
+import Logo from '../../shared/ui/Logo';
 import AppleIcon from './assets/apple.svg?react';
 import GoogleIcon from './assets/google.svg?react';
 
-const SignUp = () => {
+import FormInput from '../../shared/ui/FormInput';
+import Button from '../../shared/ui/Button';
+
+interface SignUpProps {
+  handleClose: () => void;
+  setIsSignUpOpen: Dispatch<SetStateAction<boolean>>;
+  setIsSignInOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const SignUp: FC<SignUpProps> = ({
+  handleClose,
+  setIsSignUpOpen,
+  setIsSignInOpen,
+}) => {
   const [selectValue, setSelectValue] = useState(selectData.defaultValue);
 
   const handleSelectChange = (e) => {
     setSelectValue(e.target.value);
   };
 
+  const handleYet = () => {
+    setIsSignUpOpen(false);
+    setIsSignInOpen(true);
+  };
+
+  const handlePopupClick = (e) => {
+    e.stopPropagation();
+    console.log(e.target);
+  };
+
   return (
-    <Box sx={styles.overlay}>
-      <Box sx={styles.container}>
-        <IconButton
-          sx={{
-            padding: '0',
-            position: 'absolute',
-            top: '35px',
-            right: '32px',
-          }}
-        >
+    <Box sx={styles.overlay} onMouseDown={handleClose}>
+      <Box sx={styles.container} onMouseDown={handlePopupClick}>
+        <IconButton onMouseDown={handleClose} sx={styles.closeButton}>
           <CloseIcon />
         </IconButton>
-        <Box
-          sx={{ display: 'flex', alignItems: 'flex-start', columnGap: '32px' }}
-        >
+        <Box sx={styles.headerContainer}>
           <Logo width={logoSize.width} height={logoSize.height} />
           <Typography sx={styles.title}>{title}</Typography>
         </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            rowGap: '20px',
-          }}
-        >
-          <FormInput name='firstName' label='Имя' placeholder='Введите имя' />
+        <Box sx={styles.inputsContainer}>
           <FormInput
-            name='lastName'
-            label='Фамилия'
-            placeholder='Введите фамилию'
+            name={inputsData.firstName.name}
+            label={inputsData.firstName.label}
+            placeholder={inputsData.firstName.placeHolder}
           />
           <FormInput
-            name='telephone'
-            label='Телефон'
-            placeholder='Введите телефон'
+            name={inputsData.lastName.name}
+            label={inputsData.lastName.label}
+            placeholder={inputsData.lastName.placeHolder}
           />
-          <FormInput name='email' label='Почта' placeholder='Введите почту' />
-          <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '8px' }}>
-            <InputLabel
-              sx={{
-                fontSize: '20px',
-                fontWeight: '500',
-                lineHeight: '24.2px',
-                color: '#757575',
-              }}
-            >
-              Вы художник?
-            </InputLabel>
+          <FormInput
+            name={inputsData.telephone.name}
+            label={inputsData.telephone.label}
+            placeholder={inputsData.telephone.placeHolder}
+          />
+          <FormInput
+            name={inputsData.email.name}
+            label={inputsData.email.label}
+            placeholder={inputsData.email.placeHolder}
+          />
+          <Box sx={styles.selectContainer}>
+            <InputLabel sx={styles.selectLabel}>Вы художник?</InputLabel>
             <Select
               onChange={handleSelectChange}
               value={selectValue}
@@ -119,38 +127,21 @@ const SignUp = () => {
             </Select>
           </Box>
           <FormInput
-            name='password'
-            label='Пароль'
-            placeholder='Введите свой пароль'
+            name={inputsData.password.name}
+            label={inputsData.password.label}
+            placeholder={inputsData.password.placeHolder}
           />
           <FormInput
-            name='complete-password'
-            label='Подтвердите пароль'
-            placeholder='Введите свой пароль'
+            name={inputsData.completePassword.name}
+            label={inputsData.completePassword.label}
+            placeholder={inputsData.completePassword.placeHolder}
           />
         </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            columnGap: '8px',
-            margin: '23px 0 20px 0',
-          }}
-        >
-          <Checkbox />
-          <Typography
-            sx={{
-              fontSize: '20px',
-              fontWeight: '400',
-              lineHeight: '28px',
-              width: '600px',
-              color: '#252525',
-            }}
-          >
-            {checkboxText}
-          </Typography>
+        <Box sx={styles.checkboxContainer}>
+          <Checkbox sx={styles.checkbox} />
+          <Typography sx={styles.checkboxText}>{checkboxText}</Typography>
         </Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '16px' }}>
+        <Box sx={styles.buttonsContainer}>
           <Button
             text={signUpButton.text}
             bgColor={signUpButton.bgColor}
@@ -160,17 +151,7 @@ const SignUp = () => {
             width={signUpButton.width}
             color={signUpButton.color}
           />
-          <Typography
-            sx={{
-              fontSize: '20px',
-              fontWeight: '400',
-              lineHeight: '24.2px',
-              color: '#252525',
-              textAlign: 'center',
-            }}
-          >
-            {orText}
-          </Typography>
+          <Typography sx={styles.or}>{orText}</Typography>
           <Button
             text={appleButton.text}
             bgColor={appleButton.bgColor}
@@ -193,19 +174,12 @@ const SignUp = () => {
             borderColor={googleButton.borderColor}
             SvgIcon={GoogleIcon}
           />
-          <Typography
-            sx={{
-              fontSize: '24px',
-              fontWeight: '400',
-              lineHeight: '33.6px',
-              display: 'flex',
-              columnGap: '8px',
-              justifyContent: 'center',
-            }}
-          >
+          <Typography sx={styles.yetFirst}>
             {yetFirstPart}
             <Typography
-              sx={{ fontSize: '24px', fontWeight: '600', lineHeight: '33.6px' }}
+              onClick={handleYet}
+              component='span'
+              sx={styles.yetSecond}
             >
               {yetSecondPart}
             </Typography>

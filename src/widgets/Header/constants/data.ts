@@ -12,6 +12,12 @@ const navLinksData = [
   { rout: '/news', text: 'Новости' },
 ];
 
+const navButtonsRoutes = {
+  cart: '/cart',
+  favorite: '/profile/favorites',
+  profile: '/profile',
+};
+
 const signInButton = {
   text: 'Вход',
   bgColor: 'white',
@@ -33,4 +39,4 @@ const signUpButton = {
   color: 'white',
 };
 
-export { logoSize, navLinksData, signInButton, signUpButton };
+export { logoSize, navLinksData, navButtonsRoutes, signInButton, signUpButton };

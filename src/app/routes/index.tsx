@@ -6,19 +6,57 @@ import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
 import SignUp from '../../features/SignUp';
 import { useState } from 'react';
+import SignIn from '../../features/SignIn';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const [isSignInOpen, setIsSignInOpen] = useState(false);
+
+  const handleClosePopups = () => {
+    setIsSignUpOpen(false);
+    setIsSignInOpen(false);
+  };
+
+  const handleSignUpOpen = () => {
+    setIsSignUpOpen(true);
+  };
+
+  const handleSignInOpen = () => {
+    setIsSignInOpen(true);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={{ position: 'relative', maxWidth: '1920px' }}>
-        <Header isLoggedIn={isLoggedIn} />
+        <Header
+          isLoggedIn={isLoggedIn}
+          handleSignUpOpen={handleSignUpOpen}
+          handleSignInOpen={handleSignInOpen}
+        />
         <Box>
           <Outlet />
         </Box>
         <Footer />
-        {true ? <SignUp /> : ''}
+        {isSignUpOpen ? (
+          <SignUp
+            handleClose={handleClosePopups}
+            setIsSignUpOpen={setIsSignUpOpen}
+            setIsSignInOpen={setIsSignInOpen}
+          />
+        ) : (
+          ''
+        )}
+        {isSignInOpen ? (
+          <SignIn
+            handleClose={handleClosePopups}
+            setIsSignUpOpen={setIsSignUpOpen}
+            setIsSignInOpen={setIsSignInOpen}
+          />
+        ) : (
+          ''
+        )}
       </Box>
     </ThemeProvider>
   );

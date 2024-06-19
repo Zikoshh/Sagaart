@@ -6,36 +6,6 @@ const logoSize = {
 const title =
   'Зарегистрируйтесь, чтобы покупать и продавать художественные шедевры';
 
-const styles = {
-  overlay: {
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(37, 37, 37, 0.7)',
-  },
-  container: {
-    padding: '60px',
-    borderRadius: '4px',
-    maxWidth: '880px',
-    maxHeight: '90%',
-    backgroundColor: 'white',
-    position: 'relative',
-    overflow: 'auto',
-  },
-  title: {
-    color: '#010101',
-    fontSize: '36px',
-    fontWeight: '400',
-    lineHeight: '50.4px',
-    maxWidth: '550px',
-  },
-};
-
 const selectData = {
   defaultValue: 'Да/Нет',
   options: ['Да', 'Нет'],
@@ -82,10 +52,42 @@ const yetFirstPart = 'Есть аккаунт?';
 
 const yetSecondPart = 'Вход';
 
+const inputsData = {
+  firstName: {
+    name: 'firstName',
+    label: 'Имя',
+    placeHolder: 'Введите имя',
+  },
+  lastName: {
+    name: 'lastName',
+    label: 'Фамилия',
+    placeHolder: 'Введите фамилию',
+  },
+  telephone: {
+    name: 'telephone',
+    label: 'Телефон',
+    placeHolder: 'Введите телефон',
+  },
+  email: {
+    name: 'email',
+    label: 'Почта',
+    placeHolder: 'Введите почту',
+  },
+  password: {
+    name: 'password',
+    label: 'Пароль',
+    placeHolder: 'Введите свой пароль',
+  },
+  completePassword: {
+    name: 'complete-password',
+    label: 'Подтвердите пароль',
+    placeHolder: 'Введите свой пароль',
+  },
+};
+
 export {
   logoSize,
   title,
-  styles,
   selectData,
   signUpButton,
   orText,
@@ -94,4 +96,5 @@ export {
   googleButton,
   yetFirstPart,
   yetSecondPart,
+  inputsData,
 };
