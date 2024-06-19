@@ -9,7 +9,7 @@ import { useState } from 'react';
 import SignIn from '../../features/SignIn';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isSignInOpen, setIsSignInOpen] = useState(false);
 
