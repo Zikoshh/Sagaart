@@ -1,7 +1,12 @@
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
+import CatalogContent from "../../../widgets/Catalog";
 
 const Catalog = () => {
-  return <Box></Box>;
+ return (
+  <Box>
+   <CatalogContent />
+  </Box>
+ );
 };
 
 export default Catalog;
