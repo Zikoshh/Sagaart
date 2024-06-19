@@ -1,107 +1,91 @@
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Box } from '@mui/material';
-import Logo from '../../shared/ui/Logo';
 import {
   logoSize,
+  navButtonsRoutes,
   navLinksData,
   signInButton,
   signUpButton,
-} from './constants';
-import SearchInput from '../../shared/ui/SearchInput';
-import NavLink from '../../shared/ui/NavLink';
-import Button from '../../shared/ui/Button';
-import { FC } from 'react';
-import IconButton from '../../shared/ui/IconButton';
+} from './constants/data';
+import styles from './constants/styles';
+
 import CartIcon from './assets/cart.svg?react';
 import HeartIcon from './assets/heart.svg?react';
 import UserIcon from './assets/user.svg?react';
-import { Link } from 'react-router-dom';
+
+import SearchInput from '../../shared/ui/SearchInput';
+import NavLink from '../../shared/ui/NavLink';
+import Button from '../../shared/ui/Button';
+import IconButton from '../../shared/ui/IconButton';
+import Logo from '../../shared/ui/Logo';
 
 interface HeaderProps {
   isLoggedIn: boolean;
+  handleSignUpOpen: () => void;
+  handleSignInOpen: () => void;
 }
 
-const Header: FC<HeaderProps> = ({ isLoggedIn }) => {
+const Header: FC<HeaderProps> = ({
+  isLoggedIn,
+  handleSignUpOpen,
+  handleSignInOpen,
+}) => {
   return (
-    <Box
-      sx={{
-        p: '28px 80px',
-        display: 'flex',
-        columnGap: `${isLoggedIn ? '264px' : '66px'}`,
-      }}
-    >
-      <Box sx={{ display: 'flex', columnGap: '48px', width: '100%' }}>
+    <Box sx={styles.header}>
+      <Box sx={styles.logoSearchContainer}>
         <Logo width={logoSize.width} height={logoSize.height} />
-        <Box
-          sx={{
-            paddingBottom: '11px',
-            display: 'flex',
-            flexDirection: 'column',
-            rowGap: '28px',
-            maxWidth: '1150px',
-            width: '100%',
-          }}
-        >
+        <Box sx={styles.searchContainer}>
           <SearchInput />
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
+          <Box sx={styles.navContainer}>
             {navLinksData.map((link, i) => {
               return <NavLink key={i} route={link.rout} text={link.text} />;
             })}
           </Box>
         </Box>
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'flex-start',
-          columnGap: `${isLoggedIn ? '32px' : '12px'}`,
-          paddingTop: `${isLoggedIn ? '16px' : ''}`,
-        }}
-      >
-        {isLoggedIn ? (
-          <>
-            <Link to='/cart'>
-              <IconButton
-                SvgIcon={CartIcon}
-                isCart={true}
-                numberOfProducts={'2'}
-              />
-            </Link>
-            <Link to='/profile/favorites'>
-              <IconButton SvgIcon={HeartIcon} />
-            </Link>
-            <Link to='/profile'>
-              <IconButton SvgIcon={UserIcon} />
-            </Link>
-          </>
-        ) : (
-          <>
-            <Button
-              text={signInButton.text}
-              bgColor={signInButton.bgColor}
-              padding={signInButton.padding}
-              fontSize={signInButton.fontSize}
-              lineHeight={signInButton.lineHeight}
-              width={signInButton.width}
-              color={signInButton.color}
-              borderColor={signInButton.borderColor}
+      {isLoggedIn ? (
+        <Box sx={styles.actionButtonsContainer}>
+          <Link to={navButtonsRoutes.cart}>
+            <IconButton
+              SvgIcon={CartIcon}
+              isCart={true}
+              numberOfProducts={'2'}
             />
-            <Button
-              text={signUpButton.text}
-              bgColor={signUpButton.bgColor}
-              padding={signUpButton.padding}
-              fontSize={signUpButton.fontSize}
-              lineHeight={signUpButton.lineHeight}
-              width={signUpButton.width}
-              color={signUpButton.color}
-            />
-          </>
-        )}
-      </Box>
+          </Link>
+          <Link to={navButtonsRoutes.favorite}>
+            <IconButton SvgIcon={HeartIcon} />
+          </Link>
+          <Link to={navButtonsRoutes.profile}>
+            <IconButton SvgIcon={UserIcon} />
+          </Link>
+        </Box>
+      ) : (
+        <Box sx={styles.authButtonsContainer}>
+          <Button
+            onClick={handleSignInOpen}
+            text={signInButton.text}
+            bgColor={signInButton.bgColor}
+            padding={signInButton.padding}
+            fontSize={signInButton.fontSize}
+            lineHeight={signInButton.lineHeight}
+            width={signInButton.width}
+            color={signInButton.color}
+            borderColor={signInButton.borderColor}
+          />
+          <Button
+            onClick={handleSignUpOpen}
+            text={signUpButton.text}
+            bgColor={signUpButton.bgColor}
+            padding={signUpButton.padding}
+            fontSize={signUpButton.fontSize}
+            lineHeight={signUpButton.lineHeight}
+            width={signUpButton.width}
+            color={signUpButton.color}
+          />
+        </Box>
+      )}
     </Box>
   );
 };

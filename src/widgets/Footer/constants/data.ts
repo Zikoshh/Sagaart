@@ -94,12 +94,7 @@ const profileNavLinks = {
 
 const socialsTitle = 'Мы в соцсетях';
 
-const titleStyles = {
-  fontSize: '20px',
-  fontWeight: '700',
-  lineHeight: '24.2px',
-  color: '#252525',
-};
+const mainRoute = '/';
 
 export {
   logoSize,
@@ -112,5 +107,5 @@ export {
   profileTitle,
   profileNavLinks,
   socialsTitle,
-  titleStyles,
+  mainRoute
 };
