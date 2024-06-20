@@ -2,8 +2,8 @@ import "./Catalog.css";
 import { Box } from "@mui/material";
 import IconButton from "../../shared/ui/IconButton";
 import Arrow from "./assets/arrow-forward.svg?react";
+import like from "./assets/heart.svg?react";
 import FilterIcon from "./assets/whh_settingsandroid.svg?react";
-// import Assets from "./constants";
 import ImgConstants from "./ImgConstants";
 
 const CatalogContent = () => {
@@ -14,7 +14,7 @@ const CatalogContent = () => {
      <div className="catalog__filters-area">
       <button className="catalog__filter catalog__filter-price">
        Цена
-       <IconButton className="catalog__filter-button" SvgIcon={Arrow} />
+       <IconButton SvgIcon={Arrow} />
       </button>
       <button className="catalog__filter catalog__filter-size">
        Размеры
@@ -43,8 +43,16 @@ const CatalogContent = () => {
      </div>
     </div>
     <div className="catalog__content">
-     <div className="catalog__image">
-      <img src={ImgConstants.warFlowers} alt="Цветы войны" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.warFlowers}
+       alt="Цветы войны"
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Анастасия Рыкунова</h2>
       <p className="catalog__image-title">Цветы войны</p>
       <div className="catalog__image-pricing">
@@ -56,8 +64,16 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">6 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.Melanholy} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.Melanholy}
+       alt=""
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Юлия Малинина</h2>
       <p className="catalog__image-title">Меланхолия</p>
       <div className="catalog__image-pricing">
@@ -69,8 +85,16 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">4 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.graphiteDay} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.graphiteDay}
+       alt=""
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Мишель Ленц</h2>
       <p className="catalog__image-title">Графитовый день</p>
       <div className="catalog__image-pricing">
@@ -82,8 +106,16 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">20 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.sorryBook} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.sorryBook}
+       alt=""
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Бэт Гудвинт</h2>
       <p className="catalog__image-title">Прости, книга</p>
       <div className="catalog__image-pricing">
@@ -95,8 +127,12 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">4 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.peace} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img className="catalog_image-hover" src={ImgConstants.peace} alt="" />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Беонджи Ким</h2>
       <p className="catalog__image-title">Покой</p>
       <div className="catalog__image-pricing">
@@ -108,8 +144,12 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">20 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.Magic} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img className="catalog_image-hover" src={ImgConstants.Magic} alt="" />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Лена Чижова</h2>
       <p className="catalog__image-title">Магия</p>
       <div className="catalog__image-pricing">
@@ -121,8 +161,16 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">6 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.hopeAngel} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.hopeAngel}
+       alt=""
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Хейди Ланина</h2>
       <p className="catalog__image-title">Ангел надежды</p>
       <div className="catalog__image-pricing">
@@ -134,8 +182,16 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">10 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.carCulture} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.carCulture}
+       alt=""
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Томас Сим</h2>
       <p className="catalog__image-title">Культура машин</p>
       <div className="catalog__image-pricing">
@@ -147,8 +203,12 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">15 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.AirSpace} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img className="catalog_image-hover" src={ImgConstants.AirSpace} alt="" />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Марилина Марчика</h2>
       <p className="catalog__image-title">Воздух пространства</p>
       <div className="catalog__image-pricing">
@@ -160,8 +220,12 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">6 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.sameOne} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img className="catalog_image-hover" src={ImgConstants.sameOne} alt="" />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Каролина Ермоленко</h2>
       <p className="catalog__image-title">Тот самый</p>
       <div className="catalog__image-pricing">
@@ -173,8 +237,16 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">6 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.treesForce} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.treesForce}
+       alt=""
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Пати Родгерс</h2>
       <p className="catalog__image-title">Сила среди деревьев</p>
       <div className="catalog__image-pricing">
@@ -186,8 +258,16 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">16 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.graphiteDay2} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.graphiteDay2}
+       alt=""
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Сами Мендиратта</h2>
       <p className="catalog__image-title">Графитовый день</p>
       <div className="catalog__image-pricing">
@@ -199,8 +279,12 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">10 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.InDream} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img className="catalog_image-hover" src={ImgConstants.InDream} alt="" />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Егор Измайлов</h2>
       <p className="catalog__image-title">Во сне</p>
       <div className="catalog__image-pricing">
@@ -212,8 +296,16 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">6 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.nightAtMay} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img
+       className="catalog_image-hover"
+       src={ImgConstants.nightAtMay}
+       alt=""
+      />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Христофер Ларслуд</h2>
       <p className="catalog__image-title">Майская ночь</p>
       <div className="catalog__image-pricing">
@@ -225,8 +317,12 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">7 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.chaos} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img className="catalog_image-hover" src={ImgConstants.chaos} alt="" />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Славомир Зомбэк</h2>
       <p className="catalog__image-title">Хаос</p>
       <div className="catalog__image-pricing">
@@ -238,8 +334,12 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">4 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image">
-      <img src={ImgConstants.way} alt="" />
+     <div className="catalog__image catalog__image-hoverTest">
+      <div className="catalog__image-cart"></div>
+      <img className="catalog_image-hover" src={ImgConstants.way} alt="" />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">Алек Фрэнкли</h2>
       <p className="catalog__image-title">Путь</p>
       <div className="catalog__image-pricing">
@@ -251,8 +351,12 @@ const CatalogContent = () => {
        <p className="catalog__image-style-price">6 000 ₽</p>
       </div>
      </div>
-     <div className="catalog__image catalog__image-grid">
-      <img src={ImgConstants.fall} alt="" />
+     <div className="catalog__image catalog__image-hoverTest catalog__image-grid">
+      <div className="catalog__image-cart"></div>
+      <img className="catalog_image-hover" src={ImgConstants.fall} alt="" />
+      <div className="catalog__authorField">
+       <IconButton sx={{}} SvgIcon={like} />
+      </div>
       <h2 className="catalog__image-author">София Маритина</h2>
       <p className="catalog__image-title">Падение</p>
       <div className="catalog__image-pricing">
