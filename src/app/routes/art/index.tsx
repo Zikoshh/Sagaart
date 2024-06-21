@@ -22,7 +22,7 @@ import LikeIcon from './assets/heart.svg?react';
 import Button from '../../../shared/ui/Button';
 
 const Art = () => {
-  const [art, setArt] = useState(artMockData);
+  const [art] = useState(artMockData);
 
   return (
     <Box sx={styles.mainContainer}>
