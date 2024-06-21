@@ -10,7 +10,7 @@ import {
  cardsData,
 } from "./constants/data";
 import styles from "./constants/styles";
-import FairGradeModal from "../../../features/FairGrade";
+import FairGradeModal from "../../../features/FairGradeModal";
 import subscriptionImg from "./assets/subscriptionImg.jpeg";
 import catalogImg from "./assets/catalogImg.png";
 
