@@ -64,6 +64,7 @@ const Main = () => {
               lineHeight={catalogSellButton.lineHeight}
               width={catalogSellButton.width}
               color={catalogSellButton.color}
+              borderColor={catalogSellButton.borderColor}
             />
           </Box>
         </Box>
@@ -71,7 +72,7 @@ const Main = () => {
       <Box sx={styles.cardsContainer}>
         {cardsData.map((card) => {
           return (
-            <Box sx={styles.card}>
+            <Box key={card.title} sx={styles.card}>
               <NavLink to={card.rout}>
                 <Box component={'img'} src={card.img} sx={styles.cardImg}></Box>
               </NavLink>
