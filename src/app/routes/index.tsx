@@ -39,7 +39,7 @@ const App = () => {
           handleSignUpOpen={handleSignUpOpen}
           handleSignInOpen={handleSignInOpen}
         />
-        <Box sx={{ padding: '80px' }}>
+        <Box>
           <Outlet />
         </Box>
         <Footer />

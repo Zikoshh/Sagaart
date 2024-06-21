@@ -3,6 +3,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     rowGap: '80px',
+    margin: '80px',
   },
   container: {
     display: 'grid',
