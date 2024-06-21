@@ -33,7 +33,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ position: 'relative', maxWidth: '1920px' }}>
+      <Box sx={{ position: 'relative', maxWidth: '1920px', margin: '0 auto' }}>
         <Header
           isLoggedIn={isLoggedIn}
           handleSignUpOpen={handleSignUpOpen}

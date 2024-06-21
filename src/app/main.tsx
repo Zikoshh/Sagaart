@@ -3,6 +3,7 @@ import App from './routes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Catalog from './routes/catalog';
 import Main from './routes/main';
+import Art from './routes/art';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       { path: 'pricing' },
       { path: 'consultation' },
       { path: 'news' },
-      { path: ':artId' },
+      { path: ':artId', element: <Art /> },
       { path: 'cart' },
       {
         path: 'profile',
