@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Catalog from './routes/catalog';
 import Main from './routes/main';
 import Art from './routes/art';
+import News from './routes/news';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       { path: 'pricing' },
       { path: 'consultation' },
-      { path: 'news' },
+      { path: 'news', element: <News /> },
       { path: ':artId', element: <Art /> },
       { path: 'cart' },
       {
