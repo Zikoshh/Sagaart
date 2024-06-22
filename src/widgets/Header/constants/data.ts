@@ -39,4 +39,6 @@ const signUpButton = {
   color: 'white',
 };
 
-export { logoSize, navLinksData, navButtonsRoutes, signInButton, signUpButton };
+const mainRoute = '/'
+
+export { logoSize, navLinksData, navButtonsRoutes, signInButton, signUpButton, mainRoute };
