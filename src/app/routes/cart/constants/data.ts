@@ -33,6 +33,7 @@ const button = {
   height: '195px',
   color: 'white',
   display: 'flex',
+  lineHeight: '38.73px',
 };
 
 export { cart, button };

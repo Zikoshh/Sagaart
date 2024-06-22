@@ -1,7 +1,6 @@
 import { Box, Pagination, PaginationItem, Typography } from "@mui/material";
 import { button, cart } from "./constants/data";
 import styles from "./constants/styles";
-import "./constants/style.css";
 
 import ChevronLeftIcon from "./assets/chevronLeft.svg?react";
 import ChevronRightIcon from "./assets/chevronRight.svg?react";
