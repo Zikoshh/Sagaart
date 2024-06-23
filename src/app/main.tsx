@@ -6,12 +6,13 @@ import Main from './routes/main';
 import Art from './routes/art';
 import News from './routes/news';
 import Consultation from './routes/consultation';
+import Cart from "./routes/cart";
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: [
+ {
+  path: "/",
+  element: <App />,
+  children: [
       {
         path: '/',
         element: <Main />,
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       { path: 'consultation', element: <Consultation /> },
       { path: 'news', element: <News /> },
       { path: ':artId', element: <Art /> },
-      { path: 'cart' },
+      { path: 'cart', element: <Cart /> },
       {
         path: 'profile',
         children: [
@@ -63,10 +64,10 @@ const router = createBrowserRouter([
           { path: 'settings' },
         ],
       },
-    ],
-  },
+  ],
+ },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <RouterProvider router={router}></RouterProvider>
+ReactDOM.createRoot(document.getElementById("root")!).render(
+ <RouterProvider router={router}></RouterProvider>
 );
