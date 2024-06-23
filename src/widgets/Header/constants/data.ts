@@ -15,7 +15,7 @@ const navLinksData = [
 const navButtonsRoutes = {
   cart: '/cart',
   favorite: '/profile/favorites',
-  profile: '/profile',
+  profile: '/profile/main',
 };
 
 const signInButton = {
