@@ -5,6 +5,7 @@ import Catalog from './routes/catalog';
 import Main from './routes/main';
 import Art from './routes/art';
 import News from './routes/news';
+import Consultation from './routes/consultation';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
         ],
       },
       { path: 'pricing' },
-      { path: 'consultation' },
+      { path: 'consultation', element: <Consultation /> },
       { path: 'news', element: <News /> },
       { path: ':artId', element: <Art /> },
       { path: 'cart' },
