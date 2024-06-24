@@ -1,5 +1,6 @@
 import cartItem from '../assets/CartItem.png';
-import cartItem1 from '../assets/CartItem1.png'
+import cartItem1 from '../assets/CartItem1.png';
+import deleteIcon from '../assets/DeleteButton.png'
 
 const cart = {
   title: 'Корзина',
@@ -19,6 +20,7 @@ const cart = {
   imageStyle1: 'Стиль: абстракционизм',
   img: cartItem,
   img1: cartItem1,
+  deleteIcon: deleteIcon,
   buttonText: 'оформить',
   imagePriceTotal: ' Итого: ',
   imagePriceTotalSum: ' 130 000₽ ',
