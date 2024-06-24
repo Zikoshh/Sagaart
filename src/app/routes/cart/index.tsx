@@ -16,6 +16,7 @@ const Cart = () => {
     </Box>
     <Box>
      <Box sx={styles.imageSection}>
+      <Box component="img" src={cart.deleteIcon} sx={styles.deleteIcon} />
       <Box component={"img"} src={cart.img} sx={styles.img} />
       <Box sx={styles.imageInfo}>
        <Typography sx={styles.imageAuthor}>{cart.imageAuthor}</Typography>
@@ -27,8 +28,10 @@ const Cart = () => {
       </Box>
       <Typography sx={styles.imagePrice}>{cart.imagePrice}</Typography>
      </Box>
+     <Box sx={styles.line} />
      <Box sx={styles.imageSection}>
-      <Box component={"img"} src={cart.img1} sx={styles.img1} />
+      <Box component="img" src={cart.deleteIcon} sx={styles.deleteIcon} />
+      <Box component={"img"} src={cart.img1} sx={styles.img1}></Box>
       <Box sx={styles.imageInfo}>
        <Typography sx={styles.imageAuthor1}>{cart.imageAuthor1}</Typography>
        <Typography sx={styles.imageTitle1}>{cart.imageTitle1}</Typography>

@@ -13,7 +13,7 @@ const styles = {
     objectFit: 'cover',
     objectPosition: 'center',
     borderRadius: '4px',
-    margin: '0px 0px 50px 0px',
+    margin: '0px 0px 40px 0px',
   },
     img1: {
     height: '410px',
@@ -37,6 +37,20 @@ const styles = {
   },
   buttonBuy: {
         margin: '0px 0px 0px 78%;',
+  },
+  deleteIcon: {
+    display: 'flex',
+    width: 65,
+    height: 65,
+    position: 'absolute',
+    margin: '350px 0px 0px 380px',
+    cursor: 'pointer',
+  },
+  line: {
+    borderBottom: 1, 
+    margin: '0px 10px 40px -110px',
+    borderColor: 'grey.400',
+    width: '110%',
   },
   imagePriceTotal: {fontWeight: '500', fontSize: '36px', lineHeight: '43.57px',color: 'text.secondary'},
   imagePriceTotalSum: {fontWeight: '500', fontSize: '36px', lineHeight: '43.57px'},
