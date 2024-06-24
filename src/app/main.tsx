@@ -9,6 +9,7 @@ import Consultation from './routes/consultation';
 import Cart from './routes/cart';
 import Profile from './routes/profile';
 import ProfileMain from './routes/profile/routes/main';
+import Subscription from './routes/profile/routes/subscription';
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
             path: 'main',
             element: <ProfileMain />,
           },
-          { path: 'subscription' },
+          { path: 'subscription', element: <Subscription /> },
           { path: 'on-sale' },
           { path: 'purchases' },
           { path: 'favorite-artists' },
