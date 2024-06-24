@@ -37,7 +37,7 @@ const styles = {
     lineHeight: '33.6px',
     cursor: 'pointer',
   },
-  outletContainer: { padding: '20px 0 0 22px' },
+  outletContainer: { paddingLeft: '22px', width: '100%' },
 };
 
 export default styles;
