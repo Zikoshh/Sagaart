@@ -23,7 +23,7 @@ const styles = {
     lineHeight: '28px',
   },
   artInfo:{
-    margin: '0px -260px 10px'
+    margin: '0px -50% 10px'
   },
   artStatus:{
         fontWeight: '700',
