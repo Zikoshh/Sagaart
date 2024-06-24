@@ -8,6 +8,7 @@ import News from './routes/news';
 import Consultation from './routes/consultation';
 import Cart from './routes/cart';
 import Profile from './routes/profile';
+import ProfileMain from './routes/profile/routes/main';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'main',
+            element: <ProfileMain />,
           },
           { path: 'subscription' },
           { path: 'on-sale' },
