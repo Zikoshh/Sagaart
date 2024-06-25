@@ -71,6 +71,7 @@ const Cart = () => {
       </Box>
       <Typography sx={styles.imagePrice}>{cart.imagePrice1}</Typography>
      </Box>
+     <Box sx={styles.line} />
     </Box>
    </Box>
    <Box sx={styles.imagePriceTotalPrice}>

@@ -13,7 +13,6 @@ const styles = {
     objectFit: 'cover',
     objectPosition: 'center',
     borderRadius: '4px',
-    margin: '0px 0px 40px 0px',
   },
     img1: {
     height: '410px',
@@ -28,12 +27,13 @@ const styles = {
   imageSection: {
     display: 'flex',
     width: '1750px',
+    margin: '0px 0px 0px 0px',
   },
   imagePriceTotalPrice:{
     display: 'flex',
     justifycontent: 'end',
     flexDirection: 'row-reverse',
-        margin: '0px 85px 0px 0px;',
+        margin: '-40px 85px 0px 0px;',
   },
   buttonBuy: {
         margin: '0px 0px 0px 78%;',
@@ -48,7 +48,7 @@ const styles = {
   },
   line: {
     borderBottom: 1, 
-    margin: '0px 10px 40px -110px',
+    margin: '40px 10px 40px -110px',
     borderColor: 'grey.400',
     width: '110%',
   },
