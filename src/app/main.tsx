@@ -13,6 +13,7 @@ import Subscription from './routes/profile/routes/subscription';
 import OnSale from './routes/profile/routes/onSale';
 import PurchaseHistory from './routes/profile/routes/purchaseHistory';
 import FavoriteArtists from './routes/profile/routes/favoriteArtists';
+import Favorites from './routes/profile/routes/favorites';
 
 const router = createBrowserRouter([
   {
@@ -67,7 +68,7 @@ const router = createBrowserRouter([
           { path: 'on-sale', element: <OnSale /> },
           { path: 'purchases', element: <PurchaseHistory /> },
           { path: 'favorite-artists', element: <FavoriteArtists /> },
-          { path: 'favorites' },
+          { path: 'favorites', element: <Favorites /> },
           { path: 'payment-methods' },
           { path: 'settings' },
         ],
