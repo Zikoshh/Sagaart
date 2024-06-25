@@ -11,7 +11,7 @@ const OnSale = () => {
     <Box sx={styles.onSale}>
       {/* <Typography sx={styles.title}>{title.dontHaveArts}</Typography> */}
       <Typography sx={styles.title}>{title.haveArts}</Typography>
-      <Masonry columns={3} spacing={'40px'}>
+      <Masonry columns={3} spacing={5} sx={{ maxWidth: '1310px' }}>
         {arts.map((art) => {
           return (
             <Box key={art.name} sx={styles.art}>

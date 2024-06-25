@@ -12,12 +12,14 @@ import ProfileMain from './routes/profile/routes/main';
 import Subscription from './routes/profile/routes/subscription';
 import OnSale from './routes/profile/routes/onSale';
 import PurchaseHistory from './routes/profile/routes/purchaseHistory';
+import FavoriteArtists from './routes/profile/routes/favoriteArtists';
+import Favorites from './routes/profile/routes/favorites';
 
 const router = createBrowserRouter([
- {
-  path: '/',
-  element: <App />,
-  children: [
+  {
+    path: '/',
+    element: <App />,
+    children: [
       {
         path: '/',
         element: <Main />,
@@ -65,16 +67,16 @@ const router = createBrowserRouter([
           { path: 'subscription', element: <Subscription /> },
           { path: 'on-sale', element: <OnSale /> },
           { path: 'purchases', element: <PurchaseHistory /> },
-          { path: 'favorite-artists' },
-          { path: 'favorites' },
+          { path: 'favorite-artists', element: <FavoriteArtists /> },
+          { path: 'favorites', element: <Favorites /> },
           { path: 'payment-methods' },
           { path: 'settings' },
         ],
       },
     ],
-   },
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
- <RouterProvider router={router}></RouterProvider>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <RouterProvider router={router}></RouterProvider>
 );
