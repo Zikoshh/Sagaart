@@ -66,18 +66,6 @@ const styles = {
   imageMaterialInfo: {fontWeight: '600', fontSize: '24px', lineHeight: '33.6px', color: 'text.secondary', margin: '0px 0px 0px 10px'},
   imageStyle: { color: 'text.main', display: 'flex', fontWeight: '400', fontSize: '24px', lineHeight: '33.6px' },
   imageStyleType: {fontWeight: '600', fontSize: '24px', lineHeight: '33.6px', color: 'text.secondary', margin: '0px 0px 0px 10px'},
-  paginationContainer: { display: 'flex', justifyContent: 'center' },
-  pagination: {
-    '& .MuiPaginationItem-root': {
-      fontWeight: '400',
-      fontSize: '20px',
-      lineHeight: '24.2px',
-      color: '#757575',
-    },
-    '& .MuiPaginationItem-root.Mui-selected': {
-      color: '#252525',
-    },
-  },
 };
 
 export default styles;

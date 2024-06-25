@@ -1,9 +1,6 @@
-import { Box, Pagination, PaginationItem, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { button, cart } from "./constants/data";
 import styles from "./constants/styles";
-
-import ChevronLeftIcon from "./assets/chevronLeft.svg?react";
-import ChevronRightIcon from "./assets/chevronRight.svg?react";
 
 import Button from "../../../shared/ui/Button";
 
@@ -91,18 +88,6 @@ const Cart = () => {
      lineHeight={button.lineHeight}
      width={button.width}
      color={button.color}
-    />
-   </Box>
-   <Box sx={styles.paginationContainer}>
-    <Pagination
-     sx={styles.pagination}
-     count={100}
-     renderItem={(item) => (
-      <PaginationItem
-       slots={{ previous: ChevronLeftIcon, next: ChevronRightIcon }}
-       {...item}
-      />
-     )}
     />
    </Box>
   </Box>
