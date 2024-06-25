@@ -1,5 +1,6 @@
 import cartItem from '../assets/CartItem.png';
-import cartItem1 from '../assets/CartItem1.png'
+import cartItem1 from '../assets/CartItem1.png';
+import deleteIcon from '../assets/DeleteButton.png'
 
 const cart = {
   title: 'Корзина',
@@ -7,18 +8,23 @@ const cart = {
   imagePrice1: '90 000 ₽',
   imageAuthor: 'Анастасия Рыкунова',
   imageTitle: 'Цветы войны',
-  imageYear:'Год: 2024',
-  imageSize: 'Размер: 58х70 см',
-  imageMaterial: 'Материал: масло, холст',
-  imageStyle: 'Стиль: реализм',
-    imageAuthor1: 'Сами Мендиратта',
+  imageYear:'Год:',
+  imageYearinfo: '2024',
+  imageSize: 'Размер:',
+  imageSizeInfo: '58х70 см',
+  imageMaterial: 'Материал:',
+  imageMaterialInfo: 'масло, холст',
+  imageStyle: 'Стиль:',
+  imageStyleType: 'реализм',
+  imageAuthor1: 'Сами Мендиратта',
   imageTitle1: 'Графитовый день',
   imageYear1:'Год: 2024',
-  imageSize1: 'РРазмер: 80х80 см',
+  imageSize1: 'Размер:',
   imageMaterial1: 'Материал: масло, холст',
-  imageStyle1: 'Стиль: абстракционизм',
+  imageStyleType1: 'абстракционизм',
   img: cartItem,
   img1: cartItem1,
+  deleteIcon: deleteIcon,
   buttonText: 'оформить',
   imagePriceTotal: ' Итого: ',
   imagePriceTotalSum: ' 130 000₽ ',
