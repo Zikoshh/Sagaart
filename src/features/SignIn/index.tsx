@@ -1,6 +1,14 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { Dispatch, FC, SetStateAction, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import { Box, IconButton, Typography } from '@mui/material';
+import {
+  Box,
+  IconButton,
+  InputLabel,
+  OutlinedInput,
+  Typography,
+  InputAdornment,
+} from '@mui/material';
 import {
   logoSize,
   title,
@@ -11,6 +19,8 @@ import {
   yetFirstPart,
   yetSecondPart,
   inputsData,
+  emailRegex,
+  passwordRegex,
 } from './constants/data';
 import styles from './constants/styles';
 
@@ -18,8 +28,9 @@ import CloseIcon from './assets/close.svg?react';
 import Logo from '../../shared/ui/Logo';
 import AppleIcon from './assets/apple.svg?react';
 import GoogleIcon from './assets/google.svg?react';
+import ShowIcon from './assets/show.svg?react';
+import HideIcon from './assets/hide.svg?react';
 
-import FormInput from '../../shared/ui/FormInput';
 import Button from '../../shared/ui/Button';
 
 interface SignUpProps {
@@ -33,18 +44,33 @@ const SignIn: FC<SignUpProps> = ({
   setIsSignUpOpen,
   setIsSignInOpen,
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+  } = useForm();
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+
   const handleYet = () => {
     setIsSignUpOpen(true);
     setIsSignInOpen(false);
   };
 
-  const handlePopupClick = (e: { stopPropagation: () => void; }) => {
+  const onSubmit = (e) => {};
+
+  const handlePopupClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
   };
 
   return (
     <Box sx={styles.overlay} onMouseDown={handleClose}>
-      <Box sx={styles.container} onMouseDown={handlePopupClick}>
+      <Box
+        component={'form'}
+        sx={styles.container}
+        onMouseDown={handlePopupClick}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <IconButton onMouseDown={handleClose} sx={styles.closeButton}>
           <CloseIcon />
         </IconButton>
@@ -53,16 +79,50 @@ const SignIn: FC<SignUpProps> = ({
           <Typography sx={styles.title}>{title}</Typography>
         </Box>
         <Box sx={styles.inputsContainer}>
-          <FormInput
-            name={inputsData.email.name}
-            label={inputsData.email.label}
-            placeholder={inputsData.email.placeHolder}
-          />
-          <FormInput
-            name={inputsData.password.name}
-            label={inputsData.password.label}
-            placeholder={inputsData.password.placeHolder}
-          />
+          <Box sx={styles.inputContainer}>
+            <InputLabel sx={styles.inputLabel} htmlFor={inputsData.email.name}>
+              {inputsData.email.label}
+            </InputLabel>
+            <OutlinedInput
+              {...register(inputsData.email.name, {
+                required: true,
+                pattern: emailRegex,
+              })}
+              sx={styles.input}
+              id={inputsData.email.name}
+              placeholder={inputsData.email.placeHolder}
+              name={inputsData.email.name}
+            />
+          </Box>
+          <Box sx={styles.inputContainer}>
+            <InputLabel
+              sx={styles.inputLabel}
+              htmlFor={inputsData.password.name}
+            >
+              {inputsData.password.label}
+            </InputLabel>
+            <OutlinedInput
+              {...register(inputsData.password.name, {
+                required: true,
+                pattern: passwordRegex,
+              })}
+              type={showPassword ? 'text' : 'password'}
+              sx={styles.passwordInput}
+              id={inputsData.password.name}
+              name={inputsData.password.name}
+              endAdornment={
+                <InputAdornment position='end'>
+                  <IconButton
+                    sx={{ padding: '0' }}
+                    onClick={handleClickShowPassword}
+                    edge='end'
+                  >
+                    {showPassword ? <ShowIcon /> : <HideIcon />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </Box>
         </Box>
         <Box sx={styles.buttonsContainer}>
           <Button
@@ -73,6 +133,7 @@ const SignIn: FC<SignUpProps> = ({
             lineHeight={signInButton.lineHeight}
             width={signInButton.width}
             color={signInButton.color}
+            type={'submit'}
           />
           <Typography sx={styles.or}>{orText}</Typography>
           <Button

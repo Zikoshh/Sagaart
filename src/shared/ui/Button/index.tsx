@@ -12,6 +12,7 @@ interface ButtonProps {
   borderColor?: string;
   SvgIcon?: any;
   onClick?: () => void;
+  type?: string;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -25,9 +26,11 @@ const Button: FC<ButtonProps> = ({
   borderColor,
   SvgIcon,
   onClick,
+  type,
 }) => {
   return (
     <MuiButton
+      type={type}
       onClick={onClick}
       startIcon={SvgIcon ? <SvgIcon /> : ''}
       variant='outlined'
@@ -44,6 +47,7 @@ const Button: FC<ButtonProps> = ({
           backgroundColor: `${bgColor}`,
         },
       }}
+      component={'button'}
     >
       {text}
     </MuiButton>
