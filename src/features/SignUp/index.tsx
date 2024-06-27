@@ -45,7 +45,9 @@ const SignUp: FC<SignUpProps> = ({
 }) => {
   const [selectValue, setSelectValue] = useState(selectData.defaultValue);
 
-  const handleSelectChange = (e) => {
+  const handleSelectChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setSelectValue(e.target.value);
   };
 
@@ -54,9 +56,8 @@ const SignUp: FC<SignUpProps> = ({
     setIsSignInOpen(true);
   };
 
-  const handlePopupClick = (e) => {
+  const handlePopupClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
-    console.log(e.target);
   };
 
   return (

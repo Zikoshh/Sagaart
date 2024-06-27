@@ -8,6 +8,7 @@ import {
   navLinksData,
   signInButton,
   signUpButton,
+  mainRoute,
 } from './constants/data';
 import styles from './constants/styles';
 
@@ -20,6 +21,7 @@ import NavLink from '../../shared/ui/NavLink';
 import Button from '../../shared/ui/Button';
 import IconButton from '../../shared/ui/IconButton';
 import Logo from '../../shared/ui/Logo';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 
 interface HeaderProps {
   isLoggedIn: boolean;
@@ -35,7 +37,9 @@ const Header: FC<HeaderProps> = ({
   return (
     <Box sx={styles.header}>
       <Box sx={styles.logoSearchContainer}>
-        <Logo width={logoSize.width} height={logoSize.height} />
+        <RouterNavLink to={mainRoute}>
+          <Logo width={logoSize.width} height={logoSize.height} />
+        </RouterNavLink>
         <Box sx={styles.searchContainer}>
           <SearchInput />
           <Box sx={styles.navContainer}>

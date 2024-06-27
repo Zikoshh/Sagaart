@@ -15,7 +15,7 @@ const navLinksData = [
 const navButtonsRoutes = {
   cart: '/cart',
   favorite: '/profile/favorites',
-  profile: '/profile',
+  profile: '/profile/main',
 };
 
 const signInButton = {
@@ -39,4 +39,6 @@ const signUpButton = {
   color: 'white',
 };
 
-export { logoSize, navLinksData, navButtonsRoutes, signInButton, signUpButton };
+const mainRoute = '/'
+
+export { logoSize, navLinksData, navButtonsRoutes, signInButton, signUpButton, mainRoute };

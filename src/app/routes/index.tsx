@@ -5,13 +5,17 @@ import { Outlet } from 'react-router-dom';
 import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
 import SignUp from '../../features/SignUp';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SignIn from '../../features/SignIn';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isSignInOpen, setIsSignInOpen] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(true);
+  }, []);
 
   const handleClosePopups = () => {
     setIsSignUpOpen(false);
@@ -29,7 +33,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ position: 'relative', maxWidth: '1920px' }}>
+      <Box sx={{ position: 'relative', maxWidth: '1920px', margin: '0 auto' }}>
         <Header
           isLoggedIn={isLoggedIn}
           handleSignUpOpen={handleSignUpOpen}

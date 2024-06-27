@@ -38,9 +38,8 @@ const SignIn: FC<SignUpProps> = ({
     setIsSignInOpen(false);
   };
 
-  const handlePopupClick = (e) => {
+  const handlePopupClick = (e: { stopPropagation: () => void; }) => {
     e.stopPropagation();
-    console.log(e.target);
   };
 
   return (
