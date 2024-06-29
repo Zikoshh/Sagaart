@@ -166,7 +166,7 @@ function ModalWindow({
      </Typography>
      <TextField
       sx={styles.PurchaseInfoAdressInput}
-      label="Введите адрес"
+      placeholder="Введите адрес"
       required
      ></TextField>
      <Box sx={styles.PurchaseInfoPenIcon2}>
