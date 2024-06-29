@@ -7,6 +7,7 @@ import {
  RadioGroup,
  FormControlLabel,
  Radio,
+ IconButton,
 } from "@mui/material";
 import { button, cart, logoSize } from "./constants/data";
 import styles from "./constants/styles";
@@ -121,7 +122,13 @@ const Cart = () => {
  );
 };
 
-function ModalWindow({ open, handleClose }) {
+function ModalWindow({
+ open,
+ handleClose,
+}: {
+ open: boolean;
+ handleClose: () => void;
+}) {
  return (
   <Modal
    open={open}
@@ -133,7 +140,9 @@ function ModalWindow({ open, handleClose }) {
     <Box sx={styles.PurchaseInfoModalHeader}>
      <Logo width={logoSize.width} height={logoSize.height} />
      <Typography sx={styles.PurchaseInfoTitle}>{cart.PurchaseInfo}</Typography>
-     <CloseIcon />
+     <IconButton onMouseDown={handleClose} sx={styles.closeButton}>
+      <CloseIcon />
+     </IconButton>
     </Box>
     <Form color="primary">
      <Typography sx={styles.PurchaseInfoContact}>

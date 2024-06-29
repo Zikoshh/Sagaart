@@ -45,10 +45,11 @@ const styles = {
   width: 597,
   height: 150,
 },
-PurchaseInfoClose: {
-  width: 32,
-  height: 32,
-  margin: '-28px -28px 0px 0',
+closeButton: {
+    padding: '0',
+    position: 'absolute',
+    top: '35px',
+    right: '32px',
 },
   PurchaseInfoModal: {
   display: 'flex',
