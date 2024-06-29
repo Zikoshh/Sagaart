@@ -12,7 +12,7 @@ interface ButtonProps {
   borderColor?: string;
   SvgIcon?: any;
   onClick?: () => void;
-  type?: string;
+  type?: 'button' | 'submit';
 }
 
 const Button: FC<ButtonProps> = ({
@@ -47,7 +47,6 @@ const Button: FC<ButtonProps> = ({
           backgroundColor: `${bgColor}`,
         },
       }}
-      component={'button'}
     >
       {text}
     </MuiButton>
