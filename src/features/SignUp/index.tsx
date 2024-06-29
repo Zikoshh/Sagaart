@@ -1,5 +1,6 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { submitHandler } from './lib/utils';
 
 import {
   Box,
@@ -44,24 +45,46 @@ interface SignUpProps {
   handleClose: () => void;
   setIsSignUpOpen: Dispatch<SetStateAction<boolean>>;
   setIsSignInOpen: Dispatch<SetStateAction<boolean>>;
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
 }
 
 const SignUp: FC<SignUpProps> = ({
   handleClose,
   setIsSignUpOpen,
   setIsSignInOpen,
+  setIsLoggedIn,
 }) => {
   const [isArtist, setIsArtist] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const { register, handleSubmit, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
   const handleShowConfirmPassword = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
-  const onSubmit = () => {};
+  const onSubmit: SubmitHandler<FieldValues> = ({
+    firstName,
+    lastName,
+    password,
+    email,
+    phone,
+  }) => {
+    submitHandler({ firstName, lastName, password, email, phone })
+      .then(() => {
+        setIsSignUpOpen(false);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleRadioCheckbox = () => {
     setIsArtist(!isArtist);
@@ -108,6 +131,7 @@ const SignUp: FC<SignUpProps> = ({
               sx={styles.input}
               id={inputsData.firstName.name}
               name={inputsData.firstName.name}
+              error={errors?.firstName ? true : false}
             />
           </Box>
           <Box sx={styles.inputContainer}>
@@ -125,6 +149,7 @@ const SignUp: FC<SignUpProps> = ({
               sx={styles.input}
               id={inputsData.lastName.name}
               name={inputsData.lastName.name}
+              error={errors?.lastName ? true : false}
             />
           </Box>
           <Box sx={styles.inputContainer}>
@@ -139,6 +164,7 @@ const SignUp: FC<SignUpProps> = ({
               sx={styles.input}
               id={inputsData.phone.name}
               name={inputsData.phone.name}
+              error={errors?.phone ? true : false}
             />
           </Box>
           <Box sx={styles.inputContainer}>
@@ -154,6 +180,7 @@ const SignUp: FC<SignUpProps> = ({
               id={inputsData.email.name}
               placeholder={inputsData.email.placeHolder}
               name={inputsData.email.name}
+              error={errors?.email ? true : false}
             />
           </Box>
           <Box sx={styles.inputContainer}>
@@ -183,6 +210,7 @@ const SignUp: FC<SignUpProps> = ({
                   </IconButton>
                 </InputAdornment>
               }
+              error={errors?.password ? true : false}
             />
           </Box>
           <Box sx={styles.inputContainer}>
@@ -212,6 +240,7 @@ const SignUp: FC<SignUpProps> = ({
                   </IconButton>
                 </InputAdornment>
               }
+              error={errors?.confirmPassword ? true : false}
             />
           </Box>
         </Box>

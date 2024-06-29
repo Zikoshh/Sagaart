@@ -1,21 +1,38 @@
-import { Avatar, Box, Typography } from '@mui/material';
-import { navLinks, buttons, user } from './constants/data';
+import { Dispatch, SetStateAction } from 'react';
+import { Avatar, Box, Button, Typography } from '@mui/material';
+import { navLinks, buttons } from './constants/data';
 import styles from './constants/styles';
 
 import avatarImg from './assets/avatar.jpeg';
 
 import NavLink from '../../../shared/ui/NavLink';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate, useOutletContext } from 'react-router-dom';
+import { logOutHandler } from './utils';
+
+interface OutletProps {
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
+}
 
 const Profile = () => {
+  const { setIsLoggedIn } = useOutletContext<OutletProps>();
+  const firstName = localStorage.getItem('firstName');
+  const lastName = localStorage.getItem('lastName');
+  const navigate = useNavigate();
+
+  const onLogOut = () => {
+    logOutHandler();
+    setIsLoggedIn(false);
+    navigate('/');
+  };
+
   return (
     <Box sx={styles.profile}>
       <Box sx={styles.sideContainer}>
         <Box sx={styles.userContainer}>
           <Avatar src={avatarImg} sx={styles.avatar} />
           <Box>
-            <Typography sx={styles.userText}>{user.firstName}</Typography>
-            <Typography sx={styles.userText}>{user.secondName}</Typography>
+            <Typography sx={styles.userText}>{firstName}</Typography>
+            <Typography sx={styles.userText}>{lastName}</Typography>
           </Box>
         </Box>
         <Box sx={styles.navLinks}>
@@ -42,16 +59,26 @@ const Profile = () => {
             text={navLinks.paymentMethods.text}
           />
           <Box sx={styles.buttons}>
-            <Typography sx={styles.buttonBold}>{buttons.sellArt}</Typography>
-            <Typography sx={styles.buttonBold}>{buttons.sellMyArt}</Typography>
+            <Button disableRipple sx={styles.buttonBold}>
+              {buttons.sellArt}
+            </Button>
+            <Button disableRipple sx={styles.buttonBold}>
+              {buttons.sellMyArt}
+            </Button>
           </Box>
-          <Typography sx={styles.buttonDefault}>{buttons.edit}</Typography>
+          <Button disableRipple sx={styles.buttonDefault}>
+            {buttons.edit}
+          </Button>
           <NavLink
             route={navLinks.settings.route}
             text={navLinks.settings.text}
           />
-          <Typography sx={styles.buttonDefault}>{buttons.feedback}</Typography>
-          <Typography sx={styles.buttonDefault}>{buttons.logOut}</Typography>
+          <Button disableRipple sx={styles.buttonDefault}>
+            {buttons.feedback}
+          </Button>
+          <Button disableRipple sx={styles.buttonDefault} onClick={onLogOut}>
+            {buttons.logOut}
+          </Button>
         </Box>
       </Box>
       <Box sx={styles.outletContainer}>

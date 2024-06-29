@@ -1,5 +1,6 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { submitHandler } from './lib/utils';
 
 import {
   Box,
@@ -37,17 +38,20 @@ interface SignUpProps {
   handleClose: () => void;
   setIsSignUpOpen: Dispatch<SetStateAction<boolean>>;
   setIsSignInOpen: Dispatch<SetStateAction<boolean>>;
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
 }
 
 const SignIn: FC<SignUpProps> = ({
   handleClose,
   setIsSignUpOpen,
   setIsSignInOpen,
+  setIsLoggedIn,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
+    formState: { errors },
   } = useForm();
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -57,7 +61,16 @@ const SignIn: FC<SignUpProps> = ({
     setIsSignInOpen(false);
   };
 
-  const onSubmit = (e) => {};
+  const onSubmit: SubmitHandler<FieldValues> = ({ email, password }) => {
+    submitHandler({ email, password })
+      .then(() => {
+        setIsSignInOpen(false);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handlePopupClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
@@ -92,6 +105,7 @@ const SignIn: FC<SignUpProps> = ({
               id={inputsData.email.name}
               placeholder={inputsData.email.placeHolder}
               name={inputsData.email.name}
+              error={errors?.email ? true : false}
             />
           </Box>
           <Box sx={styles.inputContainer}>
@@ -121,6 +135,7 @@ const SignIn: FC<SignUpProps> = ({
                   </IconButton>
                 </InputAdornment>
               }
+              error={errors?.password ? true : false}
             />
           </Box>
         </Box>

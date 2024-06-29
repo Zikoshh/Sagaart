@@ -4,7 +4,7 @@ const emailRegex =
 const passwordRegex =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
-const phoneRegex = /^\+?[1-9][0-9]{7,14}$/;
+const phoneRegex = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
 
 const logoSize = {
   width: '111px',
