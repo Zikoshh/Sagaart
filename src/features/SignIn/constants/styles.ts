@@ -40,14 +40,14 @@ const styles = {
   inputsContainer: {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: '20px',
+    rowGap: '30px',
     marginTop: '40px',
   },
   buttonsContainer: {
     display: 'flex',
     flexDirection: 'column',
     rowGap: '16px',
-    marginTop: '40px',
+    marginTop: '30px',
   },
   or: {
     fontSize: '20px',
@@ -69,6 +69,44 @@ const styles = {
     fontWeight: '600',
     lineHeight: '33.6px',
     cursor: 'pointer',
+  },
+  inputLabel: {
+    fontSize: '20px',
+    fontWeight: '500',
+    lineHeight: '24.2px',
+    color: '#757575',
+  },
+  inputContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '8px',
+  },
+  input: {
+    fontSize: '24px',
+    fontWeight: '400',
+    lineHeight: '33.6px',
+    color: '#252525',
+    '& .MuiOutlinedInput-input': {
+      padding: '13px 0 13px 24px',
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'gray',
+    },
+  },
+  passwordInput: {
+    fontSize: '24px',
+    fontWeight: '400',
+    lineHeight: '33.6px',
+    color: '#252525',
+    '& .MuiOutlinedInput-input': {
+      padding: '13px 0 13px 24px',
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'gray',
+    },
+    '& .MuiInputAdornment-root': {
+      marginRight: '24px',
+    },
   },
 };
 
