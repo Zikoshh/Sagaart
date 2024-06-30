@@ -38,7 +38,7 @@ const Catalog = () => {
     });
   }, [offset]);
 
-  const handlePagination = (e: ChangeEvent<unknown>, value: number) => {
+  const handlePagination = (_e: ChangeEvent<unknown>, value: number) => {
     setPage(value);
     if (value > page) {
       setOffset(`${+offset + +artsLimit}`);
