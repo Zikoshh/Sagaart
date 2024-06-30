@@ -4,10 +4,6 @@ import graphiteDay from '../assets/graphiteDay.png';
 
 const title = 'Избранное';
 
-const originalText = 'Оригинал';
-
-const printText = 'Принт';
-
 const arts = [
   {
     author: 'Анастасия Рыкунова',
@@ -37,4 +33,4 @@ const selectData = {
   options: ['Все', 'Не Все'],
 };
 
-export { title, arts, originalText, printText, selectData };
+export { title, arts, selectData };
