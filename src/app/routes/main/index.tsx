@@ -50,7 +50,7 @@ const Main = () => {
   setOpen(true);
  };
 
- const handleClose = () => {
+ const handleCloseCard = () => {
   setOpen(false);
  };
 
@@ -123,7 +123,7 @@ const Main = () => {
    </Box>
    <SellModalWindow
     open={open}
-    handleClose={handleClose}
+    handleCloseCard={handleCloseCard}
     handleOpenCard={handleOpenCard}
    />
   </Box>
@@ -132,20 +132,20 @@ const Main = () => {
 
 function SellModalWindow({
  open,
- handleClose,
+ handleCloseCard,
  handleOpenCard,
 }: {
  open: boolean;
- handleClose: () => void;
+ handleCloseCard: () => void;
  handleOpenCard: () => void;
 }) {
  return (
-  <Modal open={open} onClose={handleClose}>
+  <Modal open={open} onClose={handleCloseCard}>
    <Box sx={styles.SellModal}>
     <Box sx={styles.SellModalHeader}>
      <Logo width={logoSize.width} height={logoSize.height} />
      <Typography sx={styles.SellInfoTitle}>{modalData.SellTitle}</Typography>
-     <IconButton onMouseDown={handleClose} sx={styles.closeButton}>
+     <IconButton onMouseDown={handleCloseCard} sx={styles.closeButton}>
       <CloseIcon />
      </IconButton>
     </Box>
@@ -211,7 +211,7 @@ function SellModalWindow({
       </Typography>
      </Box>
      <ButtonUI
-      onClick={handleOpenCard}
+      onClick={(handleOpenCard, handleCloseCard)}
       text={modalData.buttonText}
       bgColor={button.bgColor}
       padding={button.padding}
@@ -220,8 +220,8 @@ function SellModalWindow({
       color={button.color}
       width={styles.ButtonWidth}
      />
+     <CardModal />
     </Form>
-    <CardModal />
    </Box>
   </Modal>
  );
@@ -233,25 +233,22 @@ function CardModal() {
   setOpen(true);
  };
 
- const handleClose = () => {
+ const handleCloseCard = () => {
   setOpen(false);
  };
 
  return (
   <React.Fragment>
-   <Button onClick={handleOpenCard}>Open Child Modal</Button>
+   <Button onClick={handleOpenCard}>Модалка с картой</Button>
    <Modal
     open={open}
-    onClose={handleClose}
+    onClose={handleCloseCard}
     aria-labelledby="child-modal-title"
     aria-describedby="child-modal-description"
    >
     <Box sx={{ width: 200 }}>
-     <h2 id="child-modal-title">Text in a child modal</h2>
-     <p id="child-modal-description">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-     </p>
-     <Button onClick={handleClose}>Close Child Modal</Button>
+     <h2 id="child-modal-title">карта</h2>
+     <Button onClick={handleCloseCard}>закрыть</Button>
     </Box>
    </Modal>
   </React.Fragment>
