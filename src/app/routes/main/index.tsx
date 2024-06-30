@@ -50,7 +50,7 @@ const Main = () => {
   setOpen(true);
  };
 
- const handleCloseCard = () => {
+ const handleClose = () => {
   setOpen(false);
  };
 
@@ -123,7 +123,7 @@ const Main = () => {
    </Box>
    <SellModalWindow
     open={open}
-    handleCloseCard={handleCloseCard}
+    handleClose={handleClose}
     handleOpenCard={handleOpenCard}
    />
   </Box>
@@ -132,20 +132,20 @@ const Main = () => {
 
 function SellModalWindow({
  open,
- handleCloseCard,
+ handleClose,
  handleOpenCard,
 }: {
  open: boolean;
- handleCloseCard: () => void;
+ handleClose: () => void;
  handleOpenCard: () => void;
 }) {
  return (
-  <Modal open={open} onClose={handleCloseCard}>
+  <Modal open={open} onClose={handleClose}>
    <Box sx={styles.SellModal}>
     <Box sx={styles.SellModalHeader}>
      <Logo width={logoSize.width} height={logoSize.height} />
      <Typography sx={styles.SellInfoTitle}>{modalData.SellTitle}</Typography>
-     <IconButton onMouseDown={handleCloseCard} sx={styles.closeButton}>
+     <IconButton onMouseDown={handleClose} sx={styles.closeButton}>
       <CloseIcon />
      </IconButton>
     </Box>
@@ -211,7 +211,7 @@ function SellModalWindow({
       </Typography>
      </Box>
      <ButtonUI
-      onClick={(handleOpenCard, handleCloseCard)}
+      onClick={(handleOpenCard, handleClose)}
       text={modalData.buttonText}
       bgColor={button.bgColor}
       padding={button.padding}
