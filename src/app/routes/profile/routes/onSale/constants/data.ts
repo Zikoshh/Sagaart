@@ -10,10 +10,6 @@ const title = {
   haveArts: 'Мои произведения искусства',
 };
 
-const originalText = 'Оригинал';
-
-const printText = 'Принт';
-
 const arts = [
   {
     author: 'Анастасия Рыкунова',
@@ -59,4 +55,4 @@ const arts = [
   },
 ];
 
-export { title, originalText, printText, arts };
+export { title, arts };

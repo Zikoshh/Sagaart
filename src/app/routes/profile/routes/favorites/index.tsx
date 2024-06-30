@@ -1,18 +1,12 @@
 import { SetStateAction, useState } from 'react';
 import { Masonry } from '@mui/lab';
 
-import { Box, IconButton, MenuItem, Select, Typography } from '@mui/material';
-import {
-  arts,
-  originalText,
-  printText,
-  title,
-  selectData,
-} from './constants/data';
+import { Box, MenuItem, Select, Typography } from '@mui/material';
+import { arts, title, selectData } from './constants/data';
 import styles from './constants/styles';
 
-import LikeIcon from './assets/heart.svg?react';
 import ChevronIcon from './assets/chevronDown.svg?react';
+import ArtCard from '../../../../../features/ArtCard';
 
 const Favorites = () => {
   const [selectValue, setSelectValue] = useState(selectData.defaultValue);
@@ -42,34 +36,17 @@ const Favorites = () => {
           })}
         </Select>
         <Masonry columns={3} spacing={5} sx={{ maxWidth: '1310px' }}>
-          {arts.map((art) => {
+          {arts.map((art, i) => {
             return (
-              <Box key={art.name} sx={styles.art}>
-                <Box component={'img'} src={art.img} sx={styles.artImg} />
-                <Box sx={styles.artInfo}>
-                  <Typography sx={styles.artAuthor}>
-                    {art.author}
-                    <IconButton sx={{ padding: '0' }}>
-                      <LikeIcon />
-                    </IconButton>
-                  </Typography>
-                  <Typography sx={styles.artName}>{art.name}</Typography>
-                </Box>
-                <Box sx={styles.artPricing}>
-                  <Typography sx={styles.artOriginalText}>
-                    {originalText}
-                    <Typography sx={styles.artOriginalPrice} component={'span'}>
-                      {art.original}
-                    </Typography>
-                  </Typography>
-                  <Typography sx={styles.artPrintText}>
-                    {printText}
-                    <Typography sx={styles.artPrintPrice} component={'span'}>
-                      {art.print}
-                    </Typography>
-                  </Typography>
-                </Box>
-              </Box>
+              <ArtCard
+                key={art.name}
+                id={i.toString()}
+                title={art.name}
+                imageUrl={art.img}
+                artist={art.author}
+                original={art.original}
+                print={art.print}
+              />
             );
           })}
         </Masonry>
