@@ -1,17 +1,28 @@
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import theme from '../theme/theme';
 import '../fonts/Inter/inter.css';
 import { Outlet } from 'react-router-dom';
 import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
 import SignUp from '../../features/SignUp';
-import { useState } from 'react';
 import SignIn from '../../features/SignIn';
+
+interface OutletProps {
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
+}
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isSignInOpen, setIsSignInOpen] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const handleClosePopups = () => {
     setIsSignUpOpen(false);
@@ -29,14 +40,14 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ position: 'relative', maxWidth: '1920px' }}>
+      <Box sx={{ position: 'relative', maxWidth: '1920px', margin: '0 auto' }}>
         <Header
           isLoggedIn={isLoggedIn}
           handleSignUpOpen={handleSignUpOpen}
           handleSignInOpen={handleSignInOpen}
         />
         <Box>
-          <Outlet />
+          <Outlet context={{ setIsLoggedIn } satisfies OutletProps} />
         </Box>
         <Footer />
         {isSignUpOpen ? (
@@ -44,6 +55,7 @@ const App = () => {
             handleClose={handleClosePopups}
             setIsSignUpOpen={setIsSignUpOpen}
             setIsSignInOpen={setIsSignInOpen}
+            setIsLoggedIn={setIsLoggedIn}
           />
         ) : (
           ''
@@ -53,6 +65,7 @@ const App = () => {
             handleClose={handleClosePopups}
             setIsSignUpOpen={setIsSignUpOpen}
             setIsSignInOpen={setIsSignInOpen}
+            setIsLoggedIn={setIsLoggedIn}
           />
         ) : (
           ''

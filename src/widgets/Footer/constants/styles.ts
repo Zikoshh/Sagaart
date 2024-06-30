@@ -3,6 +3,7 @@ const styles = {
     padding: '60px 80px',
     display: 'flex',
     justifyContent: 'space-between',
+    borderTop: '1px solid #D5D5D5',
   },
   title: {
     fontSize: '20px',
