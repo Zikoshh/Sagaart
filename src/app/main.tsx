@@ -12,12 +12,15 @@ import ProfileMain from './routes/profile/routes/main';
 import Subscription from './routes/profile/routes/subscription';
 import OnSale from './routes/profile/routes/onSale';
 import PurchaseHistory from './routes/profile/routes/purchaseHistory';
+import FavoriteArtists from './routes/profile/routes/favoriteArtists';
+import Favorites from './routes/profile/routes/favorites';
+import PaymentMethods from './routes/profile/routes/paymentMethods';
 
 const router = createBrowserRouter([
- {
-  path: '/',
-  element: <App />,
-  children: [
+  {
+    path: '/',
+    element: <App />,
+    children: [
       {
         path: '/',
         element: <Main />,
@@ -52,7 +55,7 @@ const router = createBrowserRouter([
       { path: 'pricing' },
       { path: 'consultation', element: <Consultation /> },
       { path: 'news', element: <News /> },
-      { path: ':artId', element: <Art /> },
+      { path: 'art/:artId', element: <Art /> },
       { path: 'cart', element: <Cart /> },
       {
         path: 'profile',
@@ -65,16 +68,16 @@ const router = createBrowserRouter([
           { path: 'subscription', element: <Subscription /> },
           { path: 'on-sale', element: <OnSale /> },
           { path: 'purchases', element: <PurchaseHistory /> },
-          { path: 'favorite-artists' },
-          { path: 'favorites' },
-          { path: 'payment-methods' },
+          { path: 'favorite-artists', element: <FavoriteArtists /> },
+          { path: 'favorites', element: <Favorites /> },
+          { path: 'payment-methods', element: <PaymentMethods /> },
           { path: 'settings' },
         ],
       },
     ],
-   },
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
- <RouterProvider router={router}></RouterProvider>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <RouterProvider router={router}></RouterProvider>
 );

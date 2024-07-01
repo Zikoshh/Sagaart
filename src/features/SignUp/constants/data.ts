@@ -1,3 +1,11 @@
+const emailRegex =
+  /^(([^<>()[\]\\.,;:\s@”]+(\.[^<>()[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
+
+const passwordRegex =
+  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
+
 const logoSize = {
   width: '111px',
   height: '132px',
@@ -5,11 +13,6 @@ const logoSize = {
 
 const title =
   'Зарегистрируйтесь, чтобы покупать и продавать художественные шедевры';
-
-const selectData = {
-  defaultValue: 'Да/Нет',
-  options: ['Да', 'Нет'],
-};
 
 const signUpButton = {
   text: 'Регистрация',
@@ -56,39 +59,39 @@ const inputsData = {
   firstName: {
     name: 'firstName',
     label: 'Имя',
-    placeHolder: 'Введите имя',
   },
   lastName: {
     name: 'lastName',
     label: 'Фамилия',
-    placeHolder: 'Введите фамилию',
   },
-  telephone: {
-    name: 'telephone',
+  phone: {
+    name: 'phone',
     label: 'Телефон',
-    placeHolder: 'Введите телефон',
   },
   email: {
     name: 'email',
     label: 'Почта',
-    placeHolder: 'Введите почту',
+    placeHolder: 'mail@gmail.com',
   },
   password: {
     name: 'password',
     label: 'Пароль',
-    placeHolder: 'Введите свой пароль',
   },
-  completePassword: {
-    name: 'complete-password',
+  confirmPassword: {
+    name: 'confirmPassword',
     label: 'Подтвердите пароль',
-    placeHolder: 'Введите свой пароль',
   },
 };
+
+const radioCheckboxYes = 'Да';
+
+const radioCheckboxNo = 'Нет';
+
+const radioCheckboxesTitle = 'Вы художник?';
 
 export {
   logoSize,
   title,
-  selectData,
   signUpButton,
   orText,
   checkboxText,
@@ -97,4 +100,10 @@ export {
   yetFirstPart,
   yetSecondPart,
   inputsData,
+  emailRegex,
+  passwordRegex,
+  phoneRegex,
+  radioCheckboxYes,
+  radioCheckboxNo,
+  radioCheckboxesTitle,
 };

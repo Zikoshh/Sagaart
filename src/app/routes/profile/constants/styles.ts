@@ -1,12 +1,15 @@
 const styles = {
-  profile: { display: 'flex', margin: '40px 80px 60px 80px' },
+  profile: {
+    display: 'grid',
+    gridTemplateColumns: '430px 1fr',
+    margin: '40px 80px 60px 80px',
+  },
   sideContainer: {
     display: 'flex',
     flexDirection: 'column',
     padding: '20px 36px 20px 0',
     rowGap: '20px',
     borderRight: '1px solid #D5D5D5',
-    width: '430px',
   },
   userContainer: { display: 'flex', columnGap: '8px' },
   avatar: { width: '86px', height: '86px' },
@@ -29,15 +32,29 @@ const styles = {
     fontWeight: '600',
     fontSize: '24px',
     lineHeight: '33.6px',
-    cursor: 'pointer',
+    padding: '0',
+    textTransform: 'none',
+    color: '#252525',
+    justifyContent: 'flex-start',
+    textAlign: 'start',
+    ':hover': {
+      backgroundColor: 'white',
+    },
   },
   buttonDefault: {
     fontWeight: '400',
     fontSize: '24px',
     lineHeight: '33.6px',
-    cursor: 'pointer',
+    padding: '0',
+    textTransform: 'none',
+    color: '#252525',
+    justifyContent: 'flex-start',
+    textAlign: 'start',
+    ':hover': {
+      backgroundColor: 'white',
+    },
   },
-  outletContainer: { paddingLeft: '22px', width: '100%' },
+  outletContainer: { paddingLeft: '22px' },
 };
 
 export default styles;

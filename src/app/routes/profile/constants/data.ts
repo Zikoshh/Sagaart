@@ -41,9 +41,4 @@ const buttons = {
   logOut: 'Выход',
 };
 
-const user = {
-  firstName: 'Серега',
-  secondName: 'Пират',
-};
-
-export { navLinks, buttons, user };
+export { navLinks, buttons };

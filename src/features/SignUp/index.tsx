@@ -1,18 +1,20 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { submitHandler } from './lib/utils';
 
 import {
   Box,
   Checkbox,
+  FormControlLabel,
   IconButton,
+  InputAdornment,
   InputLabel,
-  MenuItem,
-  Select,
+  OutlinedInput,
   Typography,
 } from '@mui/material';
 import {
   logoSize,
   title,
-  selectData,
   signUpButton,
   orText,
   checkboxText,
@@ -21,6 +23,12 @@ import {
   yetFirstPart,
   yetSecondPart,
   inputsData,
+  emailRegex,
+  passwordRegex,
+  radioCheckboxYes,
+  radioCheckboxNo,
+  radioCheckboxesTitle,
+  phoneRegex,
 } from './constants/data';
 import styles from './constants/styles';
 
@@ -28,27 +36,62 @@ import CloseIcon from './assets/close.svg?react';
 import Logo from '../../shared/ui/Logo';
 import AppleIcon from './assets/apple.svg?react';
 import GoogleIcon from './assets/google.svg?react';
+import ShowIcon from './assets/show.svg?react';
+import HideIcon from './assets/hide.svg?react';
 
-import FormInput from '../../shared/ui/FormInput';
 import Button from '../../shared/ui/Button';
 
 interface SignUpProps {
   handleClose: () => void;
   setIsSignUpOpen: Dispatch<SetStateAction<boolean>>;
   setIsSignInOpen: Dispatch<SetStateAction<boolean>>;
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
 }
 
 const SignUp: FC<SignUpProps> = ({
   handleClose,
   setIsSignUpOpen,
   setIsSignInOpen,
+  setIsLoggedIn,
 }) => {
-  const [selectValue, setSelectValue] = useState(selectData.defaultValue);
+  const [isArtist, setIsArtist] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-  const handleSelectChange = (e: {
-    target: { value: SetStateAction<string> };
+  const handleShowPassword = () => setShowPassword(!showPassword);
+
+  const handleShowConfirmPassword = () =>
+    setShowConfirmPassword(!showConfirmPassword);
+
+  const onSubmit: SubmitHandler<FieldValues> = ({
+    firstName,
+    lastName,
+    password,
+    email,
+    phone,
   }) => {
-    setSelectValue(e.target.value);
+    submitHandler({ firstName, lastName, password, email, phone })
+      .then(() => {
+        setIsSignUpOpen(false);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleRadioCheckbox = () => {
+    setIsArtist(!isArtist);
+  };
+
+  const handlePopupClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
   };
 
   const handleYet = () => {
@@ -56,13 +99,15 @@ const SignUp: FC<SignUpProps> = ({
     setIsSignInOpen(true);
   };
 
-  const handlePopupClick = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation();
-  };
-
   return (
     <Box sx={styles.overlay} onMouseDown={handleClose}>
-      <Box sx={styles.container} onMouseDown={handlePopupClick}>
+      <Box
+        component={'form'}
+        sx={styles.container}
+        onMouseDown={handlePopupClick}
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete='off'
+      >
         <IconButton onMouseDown={handleClose} sx={styles.closeButton}>
           <CloseIcon />
         </IconButton>
@@ -71,77 +116,170 @@ const SignUp: FC<SignUpProps> = ({
           <Typography sx={styles.title}>{title}</Typography>
         </Box>
         <Box sx={styles.inputsContainer}>
-          <FormInput
-            name={inputsData.firstName.name}
-            label={inputsData.firstName.label}
-            placeholder={inputsData.firstName.placeHolder}
-          />
-          <FormInput
-            name={inputsData.lastName.name}
-            label={inputsData.lastName.label}
-            placeholder={inputsData.lastName.placeHolder}
-          />
-          <FormInput
-            name={inputsData.telephone.name}
-            label={inputsData.telephone.label}
-            placeholder={inputsData.telephone.placeHolder}
-          />
-          <FormInput
-            name={inputsData.email.name}
-            label={inputsData.email.label}
-            placeholder={inputsData.email.placeHolder}
-          />
-          <Box sx={styles.selectContainer}>
-            <InputLabel sx={styles.selectLabel}>Вы художник?</InputLabel>
-            <Select
-              onChange={handleSelectChange}
-              value={selectValue}
-              sx={{
-                color: `${
-                  selectValue === selectData.defaultValue
-                    ? '#D5D5D5'
-                    : '#252525'
-                }`,
-                fontSize: '24px',
-                fontWeight: '400',
-                lineHeight: '33.6px',
-                border: '1px solid #005CE6',
-                width: '100%',
-                '& .MuiSelect-select': {
-                  padding: '13px 24px',
-                },
-                '& .MuiOutlinedInput-notchedOutline': {
-                  border: 'none',
-                },
-              }}
+          <Box sx={styles.inputContainer}>
+            <InputLabel
+              sx={styles.inputLabel}
+              htmlFor={inputsData.firstName.name}
             >
-              <MenuItem disabled value={selectData.defaultValue}>
-                {selectData.defaultValue}
-              </MenuItem>
-              {selectData.options.map((option) => {
-                return (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                );
+              {inputsData.firstName.label}
+            </InputLabel>
+            <OutlinedInput
+              {...register(inputsData.firstName.name, {
+                required: true,
+                minLength: 2,
               })}
-            </Select>
+              sx={styles.input}
+              id={inputsData.firstName.name}
+              name={inputsData.firstName.name}
+              error={errors?.firstName ? true : false}
+            />
           </Box>
-          <FormInput
-            name={inputsData.password.name}
-            label={inputsData.password.label}
-            placeholder={inputsData.password.placeHolder}
-          />
-          <FormInput
-            name={inputsData.completePassword.name}
-            label={inputsData.completePassword.label}
-            placeholder={inputsData.completePassword.placeHolder}
-          />
+          <Box sx={styles.inputContainer}>
+            <InputLabel
+              sx={styles.inputLabel}
+              htmlFor={inputsData.lastName.name}
+            >
+              {inputsData.lastName.label}
+            </InputLabel>
+            <OutlinedInput
+              {...register(inputsData.lastName.name, {
+                required: true,
+                minLength: 2,
+              })}
+              sx={styles.input}
+              id={inputsData.lastName.name}
+              name={inputsData.lastName.name}
+              error={errors?.lastName ? true : false}
+            />
+          </Box>
+          <Box sx={styles.inputContainer}>
+            <InputLabel sx={styles.inputLabel} htmlFor={inputsData.phone.name}>
+              {inputsData.phone.label}
+            </InputLabel>
+            <OutlinedInput
+              {...register(inputsData.phone.name, {
+                required: true,
+                pattern: phoneRegex,
+              })}
+              sx={styles.input}
+              id={inputsData.phone.name}
+              name={inputsData.phone.name}
+              error={errors?.phone ? true : false}
+            />
+          </Box>
+          <Box sx={styles.inputContainer}>
+            <InputLabel sx={styles.inputLabel} htmlFor={inputsData.email.name}>
+              {inputsData.email.label}
+            </InputLabel>
+            <OutlinedInput
+              {...register(inputsData.email.name, {
+                required: true,
+                pattern: emailRegex,
+              })}
+              sx={styles.input}
+              id={inputsData.email.name}
+              placeholder={inputsData.email.placeHolder}
+              name={inputsData.email.name}
+              error={errors?.email ? true : false}
+            />
+          </Box>
+          <Box sx={styles.inputContainer}>
+            <InputLabel
+              sx={styles.inputLabel}
+              htmlFor={inputsData.password.name}
+            >
+              {inputsData.password.label}
+            </InputLabel>
+            <OutlinedInput
+              {...register(inputsData.password.name, {
+                required: true,
+                pattern: passwordRegex,
+              })}
+              type={showPassword ? 'text' : 'password'}
+              sx={styles.passwordInput}
+              id={inputsData.password.name}
+              name={inputsData.password.name}
+              endAdornment={
+                <InputAdornment position='end'>
+                  <IconButton
+                    sx={{ padding: '0' }}
+                    onClick={handleShowPassword}
+                    edge='end'
+                  >
+                    {showPassword ? <ShowIcon /> : <HideIcon />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              error={errors?.password ? true : false}
+            />
+          </Box>
+          <Box sx={styles.inputContainer}>
+            <InputLabel
+              sx={styles.inputLabel}
+              htmlFor={inputsData.confirmPassword.name}
+            >
+              {inputsData.confirmPassword.label}
+            </InputLabel>
+            <OutlinedInput
+              {...register(inputsData.confirmPassword.name, {
+                required: true,
+                validate: (v) => watch(inputsData.password.name) === v,
+              })}
+              type={showConfirmPassword ? 'text' : 'password'}
+              sx={styles.passwordInput}
+              id={inputsData.confirmPassword.name}
+              name={inputsData.confirmPassword.name}
+              endAdornment={
+                <InputAdornment position='end'>
+                  <IconButton
+                    sx={{ padding: '0' }}
+                    onClick={handleShowConfirmPassword}
+                    edge='end'
+                  >
+                    {showConfirmPassword ? <ShowIcon /> : <HideIcon />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              error={errors?.confirmPassword ? true : false}
+            />
+          </Box>
         </Box>
-        <Box sx={styles.checkboxContainer}>
-          <Checkbox sx={styles.checkbox} />
-          <Typography sx={styles.checkboxText}>{checkboxText}</Typography>
+        <Box sx={styles.radioCheckboxes}>
+          <Typography sx={styles.radioCheckboxesTitle}>
+            {radioCheckboxesTitle}
+          </Typography>
+          <Box sx={styles.radioCheckboxesContainer}>
+            <FormControlLabel
+              onChange={handleRadioCheckbox}
+              sx={styles.radioCheckboxLabel}
+              control={
+                <Checkbox
+                  checked={isArtist ? true : false}
+                  color='secondary'
+                  sx={styles.radioCheckbox}
+                />
+              }
+              label={radioCheckboxYes}
+            />
+            <FormControlLabel
+              onChange={handleRadioCheckbox}
+              sx={styles.radioCheckboxLabel}
+              control={
+                <Checkbox
+                  checked={isArtist ? false : true}
+                  color='secondary'
+                  sx={styles.radioCheckbox}
+                />
+              }
+              label={radioCheckboxNo}
+            />
+          </Box>
         </Box>
+        <FormControlLabel
+          sx={styles.checkboxLabel}
+          control={<Checkbox required color='secondary' sx={styles.checkbox} />}
+          label={checkboxText}
+        />
         <Box sx={styles.buttonsContainer}>
           <Button
             text={signUpButton.text}
@@ -151,6 +289,7 @@ const SignUp: FC<SignUpProps> = ({
             lineHeight={signUpButton.lineHeight}
             width={signUpButton.width}
             color={signUpButton.color}
+            type='submit'
           />
           <Typography sx={styles.or}>{orText}</Typography>
           <Button
