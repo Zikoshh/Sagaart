@@ -22,6 +22,7 @@ const OnSale = () => {
               artist={art.author}
               original={art.original}
               print={art.print}
+              isInFavorites={false}
             />
           );
         })}
