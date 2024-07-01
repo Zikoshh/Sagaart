@@ -22,7 +22,7 @@ import LikeIcon from './assets/heart.svg?react';
 import Button from '../../../shared/ui/Button';
 
 const Art = () => {
-  const [art, setArt] = useState(artMockData);
+  const [art] = useState(artMockData);
 
   return (
     <Box sx={styles.mainContainer}>
@@ -143,9 +143,9 @@ const Art = () => {
               </Typography>
             </Box>
             <Box>
-              {art.artist.study.map((data) => {
+              {art.artist.study.map((data, i) => {
                 return (
-                  <Typography sx={styles.artistTextDefault}>
+                  <Typography key={i} sx={styles.artistTextDefault}>
                     {data.period + ' - ' + data.institutionName}
                   </Typography>
                 );
@@ -155,9 +155,9 @@ const Art = () => {
           <Box sx={styles.artistExhibitions}>
             <Typography sx={styles.artistTextBold}>{artistTitle}</Typography>
             <Box sx={styles.artistExhibitionsContainer}>
-              {art.artist.exhibitions.map((exhibition) => {
+              {art.artist.exhibitions.map((exhibition, i) => {
                 return (
-                  <Typography sx={styles.artistTextDefault}>
+                  <Typography key={i} sx={styles.artistTextDefault}>
                     {exhibition.year + ' - ' + exhibition.info}
                   </Typography>
                 );
