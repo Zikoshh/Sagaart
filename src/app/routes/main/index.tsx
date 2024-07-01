@@ -135,8 +135,10 @@ const Main = () => {
         open={sellModalOpen}
         handleClose={handleCloseSellModal}
         handleOpenCard={handleOpenCardModal}
-        cardModalOpen={cardModalOpen}
-        handleCloseCardModal={handleCloseCardModal}
+      />
+      <CardModal
+        open={cardModalOpen}
+        handleClose={handleCloseCardModal} // Используйте тот же пропс, который указан в типах
       />
     </Box>
   );
@@ -146,21 +148,19 @@ function SellModalWindow({
   open,
   handleClose,
   handleOpenCard,
-  cardModalOpen,
-  handleCloseCardModal,
-}: {
+}: // cardModalOpen,
+// handleCloseCardModal,
+{
   open: boolean;
   handleClose: () => void;
   handleOpenCard: () => void;
-  cardModalOpen: boolean;
-  handleCloseCardModal: () => void;
+  // cardModalOpen: boolean;
+  // handleCloseCardModal: () => void;
 }) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // setTimeout(handleClose, 0);
     handleClose();
     handleOpenCard();
-    console.log('123');
   };
 
   return (
@@ -251,7 +251,6 @@ function SellModalWindow({
             width={styles.ButtonWidth}
           />
         </Form>
-        <CardModal open={cardModalOpen} handleClose={handleCloseCardModal} />
       </Box>
     </Modal>
   );
@@ -278,7 +277,7 @@ function CardModal({
             <Typography sx={styles.CardModalTitle}>
               {modalData.CardModalTitle}
             </Typography>
-            <IconButton onMouseDown={handleClose} sx={styles.closeButton}>
+            <IconButton onClick={handleClose} sx={styles.closeButton}>
               <CloseIcon />
             </IconButton>
           </Box>
