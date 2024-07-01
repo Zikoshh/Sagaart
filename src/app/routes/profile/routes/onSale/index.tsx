@@ -16,7 +16,7 @@ const OnSale = () => {
           return (
             <ArtCard
               key={art.name}
-              id={i.toString()}
+              id={i}
               title={art.name}
               imageUrl={art.img}
               artist={art.author}
