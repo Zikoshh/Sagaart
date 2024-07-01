@@ -25,6 +25,7 @@ interface Art {
   style: string;
   title: string;
   year: string;
+  id: string;
 }
 
 const Catalog = () => {
@@ -99,11 +100,11 @@ const Catalog = () => {
         </Button>
       </Box>
       <Masonry columns={4} spacing={5}>
-        {arts.map((art, i) => {
+        {arts.map((art) => {
           return (
             <ArtCard
-              key={(i + 1).toString()}
-              id={(i + 1).toString()}
+              key={art.id}
+              id={art.id}
               title={art.title}
               imageUrl={art.imageUrl}
               artist={art.artist}

@@ -38,7 +38,7 @@ const ArtCard: FC<ArtCardProps> = ({
     <Box onMouseUp={handleArtOpen} sx={styles.art}>
       <Box
         component={'img'}
-        src={`http://158.160.134.225/public/${imageUrl}`}
+        src={`http://158.160.134.225/media-back/${imageUrl}`}
         sx={styles.artImg}
       />
       <Box sx={styles.artInfo}>
