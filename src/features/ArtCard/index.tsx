@@ -8,7 +8,7 @@ import styles from './constants/styles';
 import LikeIcon from './assets/heart.svg?react';
 
 interface ArtCardProps {
-  id: string;
+  id: number;
   title: string;
   imageUrl: string;
   artist: string;

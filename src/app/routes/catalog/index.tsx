@@ -25,7 +25,7 @@ interface Art {
   style: string;
   title: string;
   year: string;
-  id: string;
+  id: number;
 }
 
 const Catalog = () => {
