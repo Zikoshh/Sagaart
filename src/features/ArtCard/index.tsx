@@ -1,20 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { FC } from 'react';
+import { addToFavorites, removeFromFavorites } from './lib/api';
 
 import { Box, IconButton, Typography } from '@mui/material';
 import { originalText, printText } from './constants/data';
+import { ArtCardProps } from './constants/types';
 import styles from './constants/styles';
 
 import LikeIcon from './assets/heart.svg?react';
-
-interface ArtCardProps {
-  id: number;
-  title: string;
-  imageUrl: string;
-  artist: string;
-  original: string;
-  print: string;
-}
+import FilledLikeIcon from './assets/filledHeart.svg?react';
 
 const ArtCard: FC<ArtCardProps> = ({
   id,
@@ -23,6 +17,9 @@ const ArtCard: FC<ArtCardProps> = ({
   artist,
   original,
   print,
+  isInFavorites,
+  handleRemoveFromArray,
+  handleAddToArray,
 }) => {
   const navigate = useNavigate();
 
@@ -34,18 +31,51 @@ const ArtCard: FC<ArtCardProps> = ({
     navigate(`/art/${id}`);
   };
 
+  const handleAddToFavorites = () => {
+    addToFavorites({
+      artName: title,
+      artId: id,
+      artPhoto: imageUrl,
+      artistName: artist,
+    })
+      .then((res) => {
+        handleAddToArray !== undefined && handleAddToArray({ artId: id });
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+        return;
+      });
+  };
+
+  const handleRemoveFromFavorites = () => {
+    removeFromFavorites({ artId: id })
+      .then(() => {
+        handleRemoveFromArray({ removedArtId: id });
+      })
+      .catch((err) => {
+        console.log(err);
+        return;
+      });
+  };
+
   return (
     <Box onMouseUp={handleArtOpen} sx={styles.art}>
       <Box
         component={'img'}
-        src={`http://158.160.134.225/media-back/${imageUrl}`}
+        src={`http://158.160.134.225${imageUrl}`}
         sx={styles.artImg}
       />
       <Box sx={styles.artInfo}>
         <Typography sx={styles.artAuthor}>
           {artist}
-          <IconButton sx={{ padding: '0' }}>
-            <LikeIcon id='0' />
+          <IconButton
+            sx={{ padding: '0' }}
+            onClick={
+              isInFavorites ? handleRemoveFromFavorites : handleAddToFavorites
+            }
+          >
+            {isInFavorites ? <FilledLikeIcon id='0' /> : <LikeIcon id='0' />}
           </IconButton>
         </Typography>
         <Typography sx={styles.artName}>{title}</Typography>

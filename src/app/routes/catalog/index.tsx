@@ -1,9 +1,10 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { getArts } from './lib/api';
+import { getArts, getFavoriteArts } from './lib/api';
 import { Masonry } from '@mui/lab';
 
 import { Box, Button, Pagination, PaginationItem } from '@mui/material';
 import { filterButtonsText, artsLimit } from './constants/data';
+import { Art, ArtInFavorites } from './constants/types';
 import styles from './constants/styles';
 
 import ChevronLeftIcon from './assets/chevronLeft.svg?react';
@@ -12,30 +13,26 @@ import ChevronDownIcon from './assets/chevronDown.svg?react';
 import FilterIcon from './assets/filter.svg?react';
 import ArtCard from '../../../features/ArtCard';
 
-interface Art {
-  artist: string;
-  author_signature: string;
-  brushstrokes_material: string;
-  decoration: string;
-  description: string;
-  imageUrl: string;
-  orientation: string;
-  series: string;
-  size: string;
-  style: string;
-  title: string;
-  year: string;
-  id: number;
-}
-
 const Catalog = () => {
   const [offset, setOffset] = useState('0');
   const [page, setPage] = useState(1);
   const [arts, setArts] = useState<Art[]>([]);
 
   useEffect(() => {
-    getArts({ limit: artsLimit, offset: offset }).then((res) => {
-      setArts(res.results);
+    Promise.all([
+      getArts({ limit: artsLimit, offset: offset }),
+      getFavoriteArts(),
+    ]).then(([{ results }, favoriteArts]) => {
+      const sortedArts = results.map((art: Art) => {
+        return {
+          ...art,
+          isInFavorites: favoriteArts.some(
+            (favoriteArt: ArtInFavorites) => favoriteArt.artwork === art.id
+          ),
+        };
+      });
+
+      setArts(sortedArts);
     });
   }, [offset]);
 
@@ -46,6 +43,32 @@ const Catalog = () => {
     } else {
       setOffset(`${+offset - +artsLimit}`);
     }
+  };
+
+  const handleRemoveFromArray = ({
+    removedArtId,
+  }: {
+    removedArtId: number;
+  }) => {
+    const newArts = arts.map((art) => {
+      if (art.id === removedArtId) {
+        art.isInFavorites = false;
+      }
+      return art;
+    });
+
+    setArts(newArts);
+  };
+
+  const handleAddToArray = ({ artId }: { artId: number }) => {
+    const newArts = arts.map((art) => {
+      if (art.id === artId) {
+        art.isInFavorites = true;
+      }
+      return art;
+    });
+
+    setArts(newArts);
   };
 
   return (
@@ -108,8 +131,11 @@ const Catalog = () => {
               title={art.title}
               imageUrl={art.imageUrl}
               artist={art.artist}
-              original={'40000'}
-              print={'5000'}
+              original={40000}
+              print={5000}
+              isInFavorites={art.isInFavorites}
+              handleRemoveFromArray={handleRemoveFromArray}
+              handleAddToArray={handleAddToArray}
             />
           );
         })}
