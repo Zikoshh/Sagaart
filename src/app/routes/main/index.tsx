@@ -31,6 +31,7 @@ import catalogImg from './assets/catalogImg.png';
 import uploadedImage from './assets/uploadedImage.png';
 import ButtonUI from '../../../shared/ui/Button';
 import MIR from '../../routes/cart/assets/MIR.svg?react';
+import PenIcon from '../../routes/cart/assets/pen.svg?react';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -299,6 +300,9 @@ function CardModal({
                 sx={styles.PurchaseInfoCard}
                 required
               ></TextField>
+              <Box sx={styles.PurchaseInfoPenIcon}>
+                <PenIcon type="button" cursor={'pointer'} />
+              </Box>
             </Box>
             <ButtonUI
               type="submit"

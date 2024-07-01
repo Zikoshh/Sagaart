@@ -164,6 +164,10 @@ margin: '-42px 0px 0px 20px'
 PurchaseInfoCardArea: {
   margin: '0px 0px 40px 0px'
 },
+PurchaseInfoPenIcon: {
+  position: 'absolute',
+  margin: '-40px 0px 0px 54%',
+},
 };
 
 export default styles;
