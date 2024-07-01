@@ -14,6 +14,7 @@ import OnSale from './routes/profile/routes/onSale';
 import PurchaseHistory from './routes/profile/routes/purchaseHistory';
 import FavoriteArtists from './routes/profile/routes/favoriteArtists';
 import Favorites from './routes/profile/routes/favorites';
+import PaymentMethods from './routes/profile/routes/paymentMethods';
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
       { path: 'pricing' },
       { path: 'consultation', element: <Consultation /> },
       { path: 'news', element: <News /> },
-      { path: ':artId', element: <Art /> },
+      { path: 'art/:artId', element: <Art /> },
       { path: 'cart', element: <Cart /> },
       {
         path: 'profile',
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
           { path: 'purchases', element: <PurchaseHistory /> },
           { path: 'favorite-artists', element: <FavoriteArtists /> },
           { path: 'favorites', element: <Favorites /> },
-          { path: 'payment-methods' },
+          { path: 'payment-methods', element: <PaymentMethods /> },
           { path: 'settings' },
         ],
       },
