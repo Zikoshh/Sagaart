@@ -107,6 +107,7 @@ SellPrice:{
   color: 'black',
 },
 ButtonWidth: '768px',
+CardButtonWidth: '740px',
 ButtonfontSize: '24px',
 
 closeButton: {
@@ -118,7 +119,51 @@ closeButton: {
 uploadedImage: {
   Width: "160px",
   Height: "162px",
-}
+},
+CardModal: {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '20px',
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 860,
+  height: 480,
+  bgcolor: 'background.paper',
+  p: 7.50,
+},
+CardModalTitleCotainer: {
+  display: 'flex',
+},
+CardModalTitle: {
+  fontWeight: '400',
+  fontSize: '36px',
+  lineHeight: '50.4px',
+  margin: '0px 0px 0px 32px',
+  width: 597,
+  height: 50,
+},
+CardModaIDInfo: {
+  fontWeight: '400', fontSize: '20px', lineHeight: '28px', margin: '0px 0px -10px 0px', color: 'text.secondary'
+},
+PurchaseInfoCard: {
+  width: 507,
+  height: 58,
+},
+PurchaseInfoCardNumber:{
+margin: '0px 0px 0px 90px',
+fontWeight: '700',
+fontSize: '20px',
+lineHeight: '24.2px',
+},
+PurchaseInfoBank: {
+position: 'absolute',
+margin: '-42px 0px 0px 20px'
+},
+PurchaseInfoCardArea: {
+  margin: '0px 0px 40px 0px'
+},
 };
 
 export default styles;

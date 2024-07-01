@@ -64,11 +64,14 @@ const modalData = {
   SellArtTitle: 'Название картины',
   SellArtDescriptionTitle: 'Описание',
   buttonText: 'Отправить на проверку',
+  cardButtonText: 'Оформить',
   UploadTip: 'Загрузите фото произведения искусства',
   buttonlineHeight: '1.6',
   SellPrice: 'Итого 300₽',
   ImageName: 'Картина.jpeg',
   ImageSize: '625 КБ',
+  CardModalTitle: 'Выберите способ оплаты',
+  CardModalInput: 'MIR **1111'
 }
 
 const button = {

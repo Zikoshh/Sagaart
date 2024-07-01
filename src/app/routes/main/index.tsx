@@ -10,6 +10,7 @@ import {
   TextField,
   styled,
   Button,
+  InputAdornment,
 } from '@mui/material';
 import {
   subscriptionData,
@@ -29,6 +30,7 @@ import subscriptionImg from './assets/subscriptionImg.jpeg';
 import catalogImg from './assets/catalogImg.png';
 import uploadedImage from './assets/uploadedImage.png';
 import ButtonUI from '../../../shared/ui/Button';
+import MIR from '../../routes/cart/assets/MIR.svg?react';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -154,9 +156,9 @@ function SellModalWindow({
 }) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleOpenCard();
-    setTimeout(handleClose, 10);
+    // setTimeout(handleClose, 0);
     handleClose();
+    handleOpenCard();
     console.log('123');
   };
 
@@ -263,16 +265,52 @@ function CardModal({
 }) {
   return (
     <React.Fragment>
-      <Button onClick={handleClose}>Открыть CardModal</Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ width: 200 }}>
-          <h2 id="child-modal-title">карта</h2>
-          <Button onClick={handleClose}>закрыть</Button>
+        <Box sx={styles.CardModal}>
+          <Box sx={styles.CardModalTitleCotainer}>
+            <Logo width={logoSize.width} height={logoSize.height} />
+            <Typography sx={styles.CardModalTitle}>
+              {modalData.CardModalTitle}
+            </Typography>
+            <IconButton onMouseDown={handleClose} sx={styles.closeButton}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+          <Typography sx={styles.CardModaIDInfo}>
+            Иванов Иван, ivanov@gmail.com, +375 29 258 12 13{' '}
+          </Typography>
+          <Form>
+            <Box sx={styles.PurchaseInfoCardArea}>
+              <TextField
+                inputProps={{ style: { fontSize: 20 } }}
+                placeholder="MIR **1111"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <MIR width={'77.91'} height={'26'} />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={styles.PurchaseInfoCard}
+                required
+              ></TextField>
+            </Box>
+            <ButtonUI
+              type="submit"
+              text={modalData.cardButtonText}
+              bgColor={button.bgColor}
+              padding={button.padding}
+              fontSize={styles.ButtonfontSize}
+              lineHeight={modalData.buttonlineHeight}
+              color={button.color}
+              width={styles.CardButtonWidth}
+            />
+          </Form>
         </Box>
       </Modal>
     </React.Fragment>
