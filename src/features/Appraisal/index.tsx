@@ -128,7 +128,7 @@ const Appraisal: FC<AppraisalProps> = ({
               </Box>
               <MuiButton
                 sx={styles.uploadButton}
-                component='label'
+                component="label"
                 role={undefined}
                 tabIndex={-1}
                 startIcon={<UploadIcon sx={styles.uploadIcon} />}
@@ -136,7 +136,7 @@ const Appraisal: FC<AppraisalProps> = ({
                 <VisuallyHiddenInput
                   required
                   onChange={handleChangeFile}
-                  type='file'
+                  type="file"
                 />
               </MuiButton>
             </Box>
@@ -147,7 +147,7 @@ const Appraisal: FC<AppraisalProps> = ({
             ''
           )}
           <Button
-            type='submit'
+            type="submit"
             text={sendButton.text}
             bgColor={sendButton.bgColor}
             padding={sendButton.padding}
