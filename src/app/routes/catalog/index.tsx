@@ -19,21 +19,29 @@ const Catalog = () => {
   const [arts, setArts] = useState<Art[]>([]);
 
   useEffect(() => {
-    Promise.all([
-      getArts({ limit: artsLimit, offset: offset }),
-      getFavoriteArts(),
-    ]).then(([{ results }, favoriteArts]) => {
-      const sortedArts = results.map((art: Art) => {
-        return {
-          ...art,
-          isInFavorites: favoriteArts.some(
-            (favoriteArt: ArtInFavorites) => favoriteArt.artwork === art.id
-          ),
-        };
-      });
+    const token = localStorage.getItem('token');
 
-      setArts(sortedArts);
-    });
+    if (token) {
+      Promise.all([
+        getArts({ limit: artsLimit, offset: offset }),
+        getFavoriteArts(),
+      ]).then(([{ results }, favoriteArts]) => {
+        const sortedArts = results.map((art: Art) => {
+          return {
+            ...art,
+            isInFavorites: favoriteArts.some(
+              (favoriteArt: ArtInFavorites) => favoriteArt.artwork === art.id
+            ),
+          };
+        });
+
+        setArts(sortedArts);
+      });
+    } else {
+      getArts({ limit: artsLimit, offset: offset }).then(({ results }) => {
+        setArts(results);
+      });
+    }
   }, [offset]);
 
   const handlePagination = (_e: ChangeEvent<unknown>, value: number) => {
@@ -76,42 +84,42 @@ const Catalog = () => {
       <Box sx={styles.filter}>
         <Box sx={styles.filterSelects}>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.price}
           </Button>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.sizes}
           </Button>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.orientation}
           </Button>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.category}
           </Button>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.style}
           </Button>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
