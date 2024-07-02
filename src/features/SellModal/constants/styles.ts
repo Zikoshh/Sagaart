@@ -69,6 +69,14 @@ const styles = {
     fontWeight: '500',
     lineHeight: '24.2px',
   },
+    uploadLabelImg: {
+    width: '200px',
+    fontSize: '20px',
+    fontWeight: '500',
+    lineHeight: '24.2px',
+    margin: "-30px -53px 0px 0px",
+    padding: "0px 10px 0px 0px"
+  },
   imgProperties: {
     display: 'flex',
     flexDirection: 'column',
@@ -106,9 +114,10 @@ const styles = {
   uploadButton: {
     backgroundColor: 'white',
     height: '30px',
-    minWidth: '30px',
+    // minWidth: '100px',
     padding: '0',
     mt: 12,
+    mr: 1.6,
     '& .MuiButton-startIcon': {
       margin: '0',
     },
@@ -120,6 +129,7 @@ const styles = {
     height: '30px',
     width: '30px',
     mb: 4,
+    mr: 1,
   },
   imgContainer: {
         objectFit: 'cover',

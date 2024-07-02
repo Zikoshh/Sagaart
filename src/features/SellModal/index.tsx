@@ -44,7 +44,7 @@ const SellModal: FC<SellProps> = ({ open, handleClose, isPaid, onSubmit }) => {
 
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
 
-  const handleFile = (file: File) => {
+  const handleFileAuthor = (file: File) => {
     const reader = new FileReader();
     reader.onload = (e: ProgressEvent<FileReader>) => {
       if (e.target && e.target.result) {
@@ -60,10 +60,33 @@ const SellModal: FC<SellProps> = ({ open, handleClose, isPaid, onSubmit }) => {
     reader.readAsDataURL(file);
   };
 
-  const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileArt = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      if (e.target && e.target.result) {
+        const dataUrl = e.target.result;
+        if (typeof dataUrl === 'string') {
+          setUploadedFiles((prevFiles) => [
+            ...prevFiles,
+            { name: file.name, size: file.size, dataUrl },
+          ]);
+        }
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleChangeFileAuthor = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      Array.from(files).forEach((file: File) => handleFile(file));
+      Array.from(files).forEach((file: File) => handleFileAuthor(file));
+    }
+  };
+
+  const handleChangeFileArt = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      Array.from(files).forEach((file: File) => handleFileArt(file));
     }
   };
 
@@ -257,11 +280,25 @@ const SellModal: FC<SellProps> = ({ open, handleClose, isPaid, onSubmit }) => {
               tabIndex={-1}
               startIcon={<UploadIcon sx={styles.uploadIcon} />}
             >
+              <Typography sx={styles.uploadLabelImg}> Фото автора</Typography>
               <VisuallyHiddenInput
                 required
-                onChange={handleChangeFile}
+                onChange={handleChangeFileAuthor}
                 type="file"
-                multiple
+              />
+            </MuiButton>
+            <MuiButton
+              sx={styles.uploadButton}
+              component="label"
+              role={undefined}
+              tabIndex={-1}
+              startIcon={<UploadIcon sx={styles.uploadIcon} />}
+            >
+              <Typography sx={styles.uploadLabelImg}> Фото картины</Typography>
+              <VisuallyHiddenInput
+                required
+                onChange={handleChangeFileArt}
+                type="file"
               />
             </MuiButton>
           </Box>
