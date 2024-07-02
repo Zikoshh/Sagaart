@@ -53,38 +53,7 @@ const cardsData = [
   { title: 'Художники', rout: '/catalog/artists', img: artistsImg },
 ];
 
-const logoSize = {
-  width: '111px',
-  height: '132px',
-};
-
-const modalData = {
-  SellTitle: 'Для оценки  арт-объекта заполните форму',
-  SellAuthorTitle: 'Автор',
-  SellArtTitle: 'Название картины',
-  SellArtDescriptionTitle: 'Описание',
-  buttonText: 'Отправить на проверку',
-  cardButtonText: 'Оформить',
-  UploadTip: 'Загрузите фото произведения искусства',
-  buttonlineHeight: '1.6',
-  SellPrice: 'Итого 300₽',
-  ImageName: 'Картина.jpeg',
-  ImageSize: '625 КБ',
-  CardModalTitle: 'Выберите способ оплаты',
-  CardModalInput: 'MIR **1111'
-}
-
-const button = {
-  bgColor: '#252525',
-  padding: '16px 0',
-  fontSize: '32px',
-  right: '80px',
-  width: '410px',
-  height: '195px',
-  color: 'white',
-  display: 'flex',
-  lineHeight: '38.73px',
-};
+const catalogUrl = '/catalog';
 
 export {
   subscriptionData,
@@ -93,7 +62,5 @@ export {
   catalogBuyButton,
   catalogSellButton,
   cardsData,
-  logoSize,
-  modalData,
-  button,
+  catalogUrl,
 };
