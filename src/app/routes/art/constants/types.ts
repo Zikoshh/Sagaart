@@ -15,6 +15,16 @@ interface ArtProps {
   about_author: string;
   author_photo: string;
   author_user_id: number;
+  isInFavorites: boolean;
 }
 
-export type { ArtProps };
+interface ArtInFavorites {
+  art_name: string;
+  art_photo: string;
+  artist_name: string;
+  artwork: number;
+  original_price: number;
+  poster_price: number;
+}
+
+export type { ArtProps, ArtInFavorites };

@@ -1,4 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import {
+  addToFavorites,
+  getArt,
+  getFavoriteArts,
+  removeFromFavorites,
+} from './lib/api';
 
 import { Box, Button as MuiButton, Typography } from '@mui/material';
 import {
@@ -6,10 +13,9 @@ import {
   originalButton,
   printButton,
   title,
-  artistTitle,
   artMockData,
 } from './constants/data';
-import { ArtProps } from './constants/types';
+import { ArtInFavorites, ArtProps } from './constants/types';
 import styles from './constants/style';
 
 import ArrowIcon from './assets/arrowUp.svg?react';
@@ -17,10 +23,9 @@ import ProgressionIcon from './assets/progression.svg?react';
 import ChevronIcon from './assets/chevronRight.svg?react';
 import CartIcon from './assets/cart.svg?react';
 import LikeIcon from './assets/heart.svg?react';
+import FilledLikeIcon from './assets/filledHeart.svg?react';
 
 import Button from '../../../shared/ui/Button';
-import { useParams } from 'react-router-dom';
-import { getArt } from './lib/api';
 
 const Art = () => {
   const [art, setArt] = useState<ArtProps>();
@@ -28,12 +33,66 @@ const Art = () => {
 
   useEffect(() => {
     if (artId !== undefined) {
-      getArt(artId).then((art) => {
-        setArt(art);
-        return;
-      });
+      const token = localStorage.getItem('token');
+      if (token) {
+        Promise.all([getArt(artId), getFavoriteArts()])
+          .then(([art, favoriteArts]) => {
+            const changedArt = {
+              ...art,
+              isInFavorites: favoriteArts.some(
+                (favoriteArt: ArtInFavorites) => favoriteArt.artwork === art.id
+              ),
+            };
+            setArt(changedArt);
+          })
+          .catch((err) => {
+            console.log(err);
+            return;
+          });
+      } else {
+        getArt(artId)
+          .then((art) => {
+            setArt(art);
+          })
+          .catch((err) => {
+            console.log(err);
+            return;
+          });
+      }
     }
   }, [artId]);
+
+  const handleAddToFavorites = () => {
+    if (art !== undefined) {
+      addToFavorites({
+        artName: art.title,
+        artId: art.id,
+        artPhoto: art.imageUrl,
+        artistName: art.artist,
+      })
+        .then((res) => {
+          setArt({ ...art, isInFavorites: true });
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          return;
+        });
+    }
+  };
+
+  const handleRemoveFromFavorites = () => {
+    if (art !== undefined) {
+      removeFromFavorites({ artId: art.id })
+        .then(() => {
+          setArt({ ...art, isInFavorites: false });
+        })
+        .catch((err) => {
+          console.log(err);
+          return;
+        });
+    }
+  };
 
   return (
     <Box sx={styles.mainContainer}>
@@ -48,8 +107,15 @@ const Art = () => {
           <MuiButton sx={styles.imgButtonTop}>
             <CartIcon />
           </MuiButton>
-          <MuiButton sx={styles.imgButtonBottom}>
-            <LikeIcon />
+          <MuiButton
+            sx={styles.imgButtonBottom}
+            onClick={
+              art?.isInFavorites
+                ? handleRemoveFromFavorites
+                : handleAddToFavorites
+            }
+          >
+            {art?.isInFavorites ? <FilledLikeIcon /> : <LikeIcon />}
           </MuiButton>
         </Box>
         <Box sx={styles.artContainer}>
@@ -159,11 +225,11 @@ const Art = () => {
               <Typography sx={styles.artistTextDefault}>
                 {art?.about_author}
               </Typography>
-              <Typography sx={styles.artistTextDefault}>
+              {/* <Typography sx={styles.artistTextDefault}>
                 {artMockData.artist.mentors}
-              </Typography>
+              </Typography> */}
             </Box>
-            <Box>
+            {/* <Box>
               {artMockData.artist.study.map((data, i) => {
                 return (
                   <Typography key={i} sx={styles.artistTextDefault}>
@@ -171,9 +237,9 @@ const Art = () => {
                   </Typography>
                 );
               })}
-            </Box>
+            </Box> */}
           </Box>
-          <Box sx={styles.artistExhibitions}>
+          {/* <Box sx={styles.artistExhibitions}>
             <Typography sx={styles.artistTextBold}>{artistTitle}</Typography>
             <Box sx={styles.artistExhibitionsContainer}>
               {artMockData.artist.exhibitions.map((exhibition, i) => {
@@ -184,7 +250,7 @@ const Art = () => {
                 );
               })}
             </Box>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
     </Box>
