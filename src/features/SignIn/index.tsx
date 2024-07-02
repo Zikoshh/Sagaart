@@ -20,8 +20,6 @@ import {
   yetFirstPart,
   yetSecondPart,
   inputsData,
-  emailRegex,
-  passwordRegex,
 } from './constants/data';
 import styles from './constants/styles';
 
@@ -99,7 +97,6 @@ const SignIn: FC<SignUpProps> = ({
             <OutlinedInput
               {...register(inputsData.email.name, {
                 required: true,
-                pattern: emailRegex,
               })}
               sx={styles.input}
               id={inputsData.email.name}
@@ -118,18 +115,17 @@ const SignIn: FC<SignUpProps> = ({
             <OutlinedInput
               {...register(inputsData.password.name, {
                 required: true,
-                pattern: passwordRegex,
               })}
               type={showPassword ? 'text' : 'password'}
               sx={styles.passwordInput}
               id={inputsData.password.name}
               name={inputsData.password.name}
               endAdornment={
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   <IconButton
                     sx={{ padding: '0' }}
                     onClick={handleClickShowPassword}
-                    edge='end'
+                    edge="end"
                   >
                     {showPassword ? <ShowIcon /> : <HideIcon />}
                   </IconButton>
@@ -177,7 +173,7 @@ const SignIn: FC<SignUpProps> = ({
             {yetFirstPart}
             <Typography
               onClick={handleYet}
-              component='span'
+              component="span"
               sx={styles.yetSecond}
             >
               {yetSecondPart}
