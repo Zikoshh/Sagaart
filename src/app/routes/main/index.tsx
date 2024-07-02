@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SellModal from '../../../features/SellModal';
 import { Box, Typography } from '@mui/material';
 import {
@@ -21,6 +21,7 @@ import Button from '../../../shared/ui/Button';
 const Main = () => {
   const navigate = useNavigate();
   const [sellModalOpen, setSellModalOpen] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
 
   const handleOpenSellModal = () => {
     setSellModalOpen(true);
@@ -32,6 +33,11 @@ const Main = () => {
 
   const handleClickBuyButton = () => {
     navigate(catalogUrl);
+  };
+
+  const handleSubmit = () => {
+    handleCloseSellModal();
+    setIsPaid(true);
   };
 
   return (
@@ -100,7 +106,12 @@ const Main = () => {
           );
         })}
       </Box>
-      <SellModal open={sellModalOpen} handleClose={handleCloseSellModal} />
+      <SellModal
+        open={sellModalOpen}
+        handleClose={handleCloseSellModal}
+        isPaid={isPaid}
+        onSubmit={handleSubmit}
+      />
     </Box>
   );
 };
