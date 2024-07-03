@@ -1,4 +1,6 @@
 import { FC, useState } from 'react';
+import { formatBytes } from '../Appraisal/lib/utils';
+
 import {
   Box,
   IconButton,
@@ -8,20 +10,15 @@ import {
   Typography,
   Button as MuiButton,
 } from '@mui/material';
-import {
-  inputsData,
-  logoSize,
-  priceText,
-  sendButton,
-  title,
-} from './constants/data';
+import { inputsData, logoSize, sendButton, title } from './constants/data';
 import styles from './constants/styles';
-import Logo from '../../shared/ui/Logo';
+
 import CloseIcon from './assets/close.svg?react';
 import UploadIcon from '@mui/icons-material/Upload';
+
+import Logo from '../../shared/ui/Logo';
 import Button from '../../shared/ui/Button';
 import VisuallyHiddenInput from './constants/VisuallyHiddenInput';
-import { formatBytes } from '../Appraisal/lib/utils';
 
 type UploadedFile = {
   name: string;
@@ -32,11 +29,10 @@ type UploadedFile = {
 interface SellProps {
   open: boolean;
   handleClose: () => void;
-  isPaid: boolean;
   onSubmit: () => void;
 }
 
-const SellModal: FC<SellProps> = ({ open, handleClose, isPaid, onSubmit }) => {
+const SellModal: FC<SellProps> = ({ open, handleClose, onSubmit }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit();
@@ -261,7 +257,7 @@ const SellModal: FC<SellProps> = ({ open, handleClose, isPaid, onSubmit }) => {
               {uploadedFiles.map((file, index) => (
                 <Box key={index} sx={styles.imgContainer}>
                   <Box
-                    component="img"
+                    component='img'
                     src={file.dataUrl}
                     alt={`Загруженное изображение ${index + 1}`}
                     sx={styles.artImg}
@@ -275,7 +271,7 @@ const SellModal: FC<SellProps> = ({ open, handleClose, isPaid, onSubmit }) => {
             </Box>
             <MuiButton
               sx={styles.uploadButton}
-              component="label"
+              component='label'
               role={undefined}
               tabIndex={-1}
               startIcon={<UploadIcon sx={styles.uploadIcon} />}
@@ -284,12 +280,12 @@ const SellModal: FC<SellProps> = ({ open, handleClose, isPaid, onSubmit }) => {
               <VisuallyHiddenInput
                 required
                 onChange={handleChangeFileAuthor}
-                type="file"
+                type='file'
               />
             </MuiButton>
             <MuiButton
               sx={styles.uploadButton}
-              component="label"
+              component='label'
               role={undefined}
               tabIndex={-1}
               startIcon={<UploadIcon sx={styles.uploadIcon} />}
@@ -298,18 +294,13 @@ const SellModal: FC<SellProps> = ({ open, handleClose, isPaid, onSubmit }) => {
               <VisuallyHiddenInput
                 required
                 onChange={handleChangeFileArt}
-                type="file"
+                type='file'
               />
             </MuiButton>
           </Box>
-          {isPaid ? (
-            <Typography sx={styles.price}>{`${priceText} 300₽`}</Typography>
-          ) : (
-            ''
-          )}
         </Box>
         <Button
-          type="submit"
+          type='submit'
           onClick={handleClose}
           text={sendButton.text}
           bgColor={sendButton.bgColor}

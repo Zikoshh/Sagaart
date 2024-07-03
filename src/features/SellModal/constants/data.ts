@@ -31,27 +31,27 @@ const inputsData = {
     placeHolder: 'Холст, масло',
     name: 'material',
   },
-  decor:  {
+  decor: {
     label: 'Оформление',
     placeHolder: 'Подрамник, рама',
     name: 'decor',
   },
-  style:  {
+  style: {
     label: 'Стиль',
     placeHolder: 'Реализм',
     name: 'style',
   },
-  signature:  {
+  signature: {
     label: 'Наличие авторской подписи',
     placeHolder: 'Есть авторская подпись',
     name: 'signature',
   },
-  email:  {
+  email: {
     label: 'Почта',
     placeHolder: 'mail@gmail.com',
     name: 'email',
   },
-  phoneNumber:  {
+  phoneNumber: {
     label: 'Номер телефона',
     placeHolder: 'Введите номер',
     name: 'phoneNumber',
@@ -60,8 +60,6 @@ const inputsData = {
     label: 'Загрузите фото художника и фото произведения искусства',
   },
 };
-
-const priceText = 'Итого: ';
 
 const sendButton = {
   text: 'Отправить на оценку',
@@ -73,4 +71,4 @@ const sendButton = {
   color: 'white',
 };
 
-export { title, inputsData, priceText, logoSize, sendButton };
+export { title, inputsData, logoSize, sendButton };

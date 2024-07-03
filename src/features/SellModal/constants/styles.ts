@@ -37,13 +37,13 @@ const styles = {
     columnGap: '16px',
     marginTop: '58px',
     marginBottom: '20px',
-    width: '372px'
+    width: '372px',
   },
   inputContainer: {
     display: 'flex',
     flexDirection: 'column',
     rowGap: '8px',
-    width: '372px'
+    width: '372px',
   },
   inputLabel: {
     fontSize: '20px',
@@ -69,13 +69,13 @@ const styles = {
     fontWeight: '500',
     lineHeight: '24.2px',
   },
-    uploadLabelImg: {
+  uploadLabelImg: {
     width: '200px',
     fontSize: '20px',
     fontWeight: '500',
     lineHeight: '24.2px',
-    margin: "-30px -53px 0px 0px",
-    padding: "0px 10px 0px 0px"
+    margin: '-30px -53px 0px 0px',
+    padding: '0px 10px 0px 0px',
   },
   imgProperties: {
     display: 'flex',
@@ -87,14 +87,14 @@ const styles = {
     fontWeight: '500',
     lineHeight: '19.36px',
     color: '#757575',
-    margin: "0px 0px 0px 0px",
+    margin: '0px 0px 0px 0px',
   },
-    imgPropertie1: {
+  imgPropertie1: {
     fontSize: '16px',
     fontWeight: '500',
     lineHeight: '19.36px',
     color: '#757575',
-    margin: "5px 0px 0px 0px",
+    margin: '5px 0px 0px 0px',
   },
   price: {
     textAlign: 'end',
@@ -108,13 +108,12 @@ const styles = {
     objectPosition: 'center',
     borderRadius: '4px',
     margin: '24px 0 12px 0',
-    width: "160px",
-    height: "162px",
+    width: '160px',
+    height: '162px',
   },
   uploadButton: {
     backgroundColor: 'white',
     height: '30px',
-    // minWidth: '100px',
     padding: '0',
     mt: 12,
     mr: 1.6,
@@ -132,17 +131,17 @@ const styles = {
     mr: 1,
   },
   imgContainer: {
-        objectFit: 'cover',
-        height: '162px',
+    objectFit: 'cover',
+    height: '162px',
     width: '160px',
-    backgroundSize: "100%",
-    display: "flex",
-    flexDirection: "column",
+    backgroundSize: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   imgBlock: {
-    display: "flex",
-    gap: "40px",
-  }
+    display: 'flex',
+    gap: '40px',
+  },
 };
 
 export default styles;

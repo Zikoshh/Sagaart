@@ -24,13 +24,13 @@ import {
 import styles from './constants/styles';
 
 import CloseIcon from './assets/close.svg?react';
-import Logo from '../../shared/ui/Logo';
 import AppleIcon from './assets/apple.svg?react';
 import GoogleIcon from './assets/google.svg?react';
 import ShowIcon from './assets/show.svg?react';
 import HideIcon from './assets/hide.svg?react';
 
 import Button from '../../shared/ui/Button';
+import Logo from '../../shared/ui/Logo';
 
 interface SignUpProps {
   handleClose: () => void;
@@ -121,11 +121,11 @@ const SignIn: FC<SignUpProps> = ({
               id={inputsData.password.name}
               name={inputsData.password.name}
               endAdornment={
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                   <IconButton
                     sx={{ padding: '0' }}
                     onClick={handleClickShowPassword}
-                    edge="end"
+                    edge='end'
                   >
                     {showPassword ? <ShowIcon /> : <HideIcon />}
                   </IconButton>
@@ -173,7 +173,7 @@ const SignIn: FC<SignUpProps> = ({
             {yetFirstPart}
             <Typography
               onClick={handleYet}
-              component="span"
+              component='span'
               sx={styles.yetSecond}
             >
               {yetSecondPart}
