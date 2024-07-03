@@ -11,6 +11,7 @@ import ChevronLeftIcon from './assets/chevronLeft.svg?react';
 import ChevronRightIcon from './assets/chevronRight.svg?react';
 import ChevronDownIcon from './assets/chevronDown.svg?react';
 import FilterIcon from './assets/filter.svg?react';
+
 import ArtCard from '../../../features/ArtCard';
 
 const Catalog = () => {
@@ -84,42 +85,42 @@ const Catalog = () => {
       <Box sx={styles.filter}>
         <Box sx={styles.filterSelects}>
           <Button
-            variant="outlined"
+            variant='outlined'
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.price}
           </Button>
           <Button
-            variant="outlined"
+            variant='outlined'
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.sizes}
           </Button>
           <Button
-            variant="outlined"
+            variant='outlined'
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.orientation}
           </Button>
           <Button
-            variant="outlined"
+            variant='outlined'
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.category}
           </Button>
           <Button
-            variant="outlined"
+            variant='outlined'
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >
             {filterButtonsText.style}
           </Button>
           <Button
-            variant="outlined"
+            variant='outlined'
             sx={styles.filterButtonSelect}
             endIcon={<ChevronDownIcon />}
           >

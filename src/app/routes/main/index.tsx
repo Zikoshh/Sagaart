@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import SellModal from '../../../features/SellModal';
+
 import { Box, Typography } from '@mui/material';
 import {
   subscriptionData,
@@ -17,11 +17,11 @@ import subscriptionImg from './assets/subscriptionImg.jpeg';
 import catalogImg from './assets/catalogImg.png';
 
 import Button from '../../../shared/ui/Button';
+import SellModal from '../../../features/SellModal';
 
 const Main = () => {
   const navigate = useNavigate();
   const [sellModalOpen, setSellModalOpen] = useState(false);
-  const [isPaid, setIsPaid] = useState(false);
 
   const handleOpenSellModal = () => {
     setSellModalOpen(true);
@@ -37,7 +37,6 @@ const Main = () => {
 
   const handleSubmit = () => {
     handleCloseSellModal();
-    setIsPaid(true);
   };
 
   return (
@@ -109,7 +108,6 @@ const Main = () => {
       <SellModal
         open={sellModalOpen}
         handleClose={handleCloseSellModal}
-        isPaid={isPaid}
         onSubmit={handleSubmit}
       />
     </Box>
