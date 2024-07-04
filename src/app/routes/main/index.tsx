@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import { Box, Typography } from '@mui/material';
 import {
@@ -8,6 +9,7 @@ import {
   catalogBuyButton,
   catalogSellButton,
   cardsData,
+  catalogUrl,
 } from './constants/data';
 import styles from './constants/styles';
 
@@ -15,8 +17,28 @@ import subscriptionImg from './assets/subscriptionImg.jpeg';
 import catalogImg from './assets/catalogImg.png';
 
 import Button from '../../../shared/ui/Button';
+import SellModal from '../../../features/SellModal';
 
 const Main = () => {
+  const navigate = useNavigate();
+  const [sellModalOpen, setSellModalOpen] = useState(false);
+
+  const handleOpenSellModal = () => {
+    setSellModalOpen(true);
+  };
+
+  const handleCloseSellModal = () => {
+    setSellModalOpen(false);
+  };
+
+  const handleClickBuyButton = () => {
+    navigate(catalogUrl);
+  };
+
+  const handleSubmit = () => {
+    handleCloseSellModal();
+  };
+
   return (
     <Box sx={styles.main}>
       <Box sx={styles.container}>
@@ -48,6 +70,7 @@ const Main = () => {
           <Typography sx={styles.subtitle}>{catalogData.subtitle}</Typography>
           <Box sx={styles.buttonsContainer}>
             <Button
+              onClick={handleClickBuyButton}
               text={catalogBuyButton.text}
               bgColor={catalogBuyButton.bgColor}
               padding={catalogBuyButton.padding}
@@ -57,6 +80,7 @@ const Main = () => {
               color={catalogBuyButton.color}
             />
             <Button
+              onClick={handleOpenSellModal}
               text={catalogSellButton.text}
               bgColor={catalogSellButton.bgColor}
               padding={catalogSellButton.padding}
@@ -64,6 +88,7 @@ const Main = () => {
               lineHeight={catalogSellButton.lineHeight}
               width={catalogSellButton.width}
               color={catalogSellButton.color}
+              borderColor={catalogSellButton.borderColor}
             />
           </Box>
         </Box>
@@ -71,7 +96,7 @@ const Main = () => {
       <Box sx={styles.cardsContainer}>
         {cardsData.map((card) => {
           return (
-            <Box sx={styles.card}>
+            <Box key={card.title} sx={styles.card}>
               <NavLink to={card.rout}>
                 <Box component={'img'} src={card.img} sx={styles.cardImg}></Box>
               </NavLink>
@@ -80,6 +105,11 @@ const Main = () => {
           );
         })}
       </Box>
+      <SellModal
+        open={sellModalOpen}
+        handleClose={handleCloseSellModal}
+        onSubmit={handleSubmit}
+      />
     </Box>
   );
 };

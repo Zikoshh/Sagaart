@@ -3,6 +3,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     rowGap: '80px',
+    margin: '80px',
   },
   container: {
     display: 'grid',
@@ -24,14 +25,14 @@ const styles = {
   },
   subscriptionImg: {
     width: '100%',
-    height: '100%',
+    height: '554px',
     borderRadius: '4px',
     objectFit: 'cover',
     objectPosition: 'center',
   },
   catalogImg: {
     width: '100%',
-    height: '474.7px',
+    height: '439px',
     borderRadius: '4px',
     objectFit: 'cover',
     objectPosition: 'center',

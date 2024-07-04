@@ -1,25 +1,50 @@
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
+
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import theme from '../theme/theme';
 import '../fonts/Inter/inter.css';
-import { Outlet } from 'react-router-dom';
+
 import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
 import SignUp from '../../features/SignUp';
-import { useEffect, useState } from 'react';
 import SignIn from '../../features/SignIn';
+import Appraisal from '../../features/Appraisal';
+import PaymentModal from '../../features/PaymentModal';
+
+interface OutletProps {
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
+}
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isSignInOpen, setIsSignInOpen] = useState(false);
+  const [isAppraisalOpen, setIsAppraisalOpen] = useState(false);
+  const [isPaidAppraisalOpen, setIsPaidAppraisalOpen] = useState(false);
+  const [isPaymentModalOPen, setIsPaymentModalOPen] = useState(false);
 
   useEffect(() => {
-    setIsLoggedIn(false);
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
   }, []);
+
+  const handleAppraisalSubmit = () => {
+    handleClosePopups();
+  };
+
+  const handlePaidAppraisalSubmit = () => {
+    setIsPaidAppraisalOpen(false);
+    setIsPaymentModalOPen(true);
+  };
 
   const handleClosePopups = () => {
     setIsSignUpOpen(false);
     setIsSignInOpen(false);
+    setIsAppraisalOpen(false);
+    setIsPaidAppraisalOpen(false);
   };
 
   const handleSignUpOpen = () => {
@@ -30,6 +55,10 @@ const App = () => {
     setIsSignInOpen(true);
   };
 
+  const handlePaidAppraisalOpen = () => {
+    setIsPaidAppraisalOpen(true);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -38,9 +67,10 @@ const App = () => {
           isLoggedIn={isLoggedIn}
           handleSignUpOpen={handleSignUpOpen}
           handleSignInOpen={handleSignInOpen}
+          handlePaidAppraisalOpen={handlePaidAppraisalOpen}
         />
-        <Box sx={{ padding: '80px' }}>
-          <Outlet />
+        <Box>
+          <Outlet context={{ setIsLoggedIn } satisfies OutletProps} />
         </Box>
         <Footer />
         {isSignUpOpen ? (
@@ -48,6 +78,7 @@ const App = () => {
             handleClose={handleClosePopups}
             setIsSignUpOpen={setIsSignUpOpen}
             setIsSignInOpen={setIsSignInOpen}
+            setIsLoggedIn={setIsLoggedIn}
           />
         ) : (
           ''
@@ -57,10 +88,27 @@ const App = () => {
             handleClose={handleClosePopups}
             setIsSignUpOpen={setIsSignUpOpen}
             setIsSignInOpen={setIsSignInOpen}
+            setIsLoggedIn={setIsLoggedIn}
           />
         ) : (
           ''
         )}
+        <PaymentModal
+          open={isPaymentModalOPen}
+          handleClose={handleClosePopups}
+        />
+        <Appraisal
+          open={isPaidAppraisalOpen}
+          isPaid={true}
+          handleClose={handleClosePopups}
+          onSubmit={handlePaidAppraisalSubmit}
+        />
+        <Appraisal
+          open={isAppraisalOpen}
+          isPaid={false}
+          handleClose={handleClosePopups}
+          onSubmit={handleAppraisalSubmit}
+        />
       </Box>
     </ThemeProvider>
   );

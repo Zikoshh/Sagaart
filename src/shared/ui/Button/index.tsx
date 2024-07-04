@@ -1,5 +1,6 @@
-import { Button as MuiButton } from '@mui/material';
 import { FC } from 'react';
+
+import { Button as MuiButton } from '@mui/material';
 
 interface ButtonProps {
   text: string;
@@ -10,8 +11,11 @@ interface ButtonProps {
   width: string;
   color: string;
   borderColor?: string;
+  // Мы не знаем какой тип нужно задать чтобы не было ошибки
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   SvgIcon?: any;
   onClick?: () => void;
+  type?: 'button' | 'submit';
 }
 
 const Button: FC<ButtonProps> = ({
@@ -25,9 +29,11 @@ const Button: FC<ButtonProps> = ({
   borderColor,
   SvgIcon,
   onClick,
+  type,
 }) => {
   return (
     <MuiButton
+      type={type}
       onClick={onClick}
       startIcon={SvgIcon ? <SvgIcon /> : ''}
       variant='outlined'
