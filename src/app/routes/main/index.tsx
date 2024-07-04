@@ -12,12 +12,16 @@ import {
   catalogUrl,
 } from './constants/data';
 import styles from './constants/styles';
+import 'swiper/css';
+import 'swiper/css/bundle';
+import './constants/swiper.css';
 
 import subscriptionImg from './assets/subscriptionImg.jpeg';
 import catalogImg from './assets/catalogImg.png';
 
 import Button from '../../../shared/ui/Button';
 import SellModal from '../../../features/SellModal';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -94,16 +98,24 @@ const Main = () => {
         </Box>
       </Box>
       <Box sx={styles.cardsContainer}>
-        {cardsData.map((card) => {
-          return (
-            <Box key={card.title} sx={styles.card}>
-              <NavLink to={card.rout}>
-                <Box component={'img'} src={card.img} sx={styles.cardImg}></Box>
-              </NavLink>
-              <Typography sx={styles.cardTitle}>{card.title}</Typography>
-            </Box>
-          );
-        })}
+        <Swiper slidesPerView={4} spaceBetween={40}>
+          {cardsData.map((card) => {
+            return (
+              <SwiperSlide key={card.title}>
+                <Box sx={styles.card}>
+                  <NavLink to={card.rout}>
+                    <Box
+                      component={'img'}
+                      src={card.img}
+                      sx={styles.cardImg}
+                    ></Box>
+                    <Typography sx={styles.cardTitle}>{card.title}</Typography>
+                  </NavLink>
+                </Box>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </Box>
       <SellModal
         open={sellModalOpen}

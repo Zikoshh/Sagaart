@@ -27,7 +27,6 @@ MVP маркетплейс предметов искусства.
 - [React](https://react.dev/)
 - [React-router-dom](https://reactrouter.com/en/main)
 - [React-hook-form](https://react-hook-form.com/)
-- [Material UI](https://mui.com/material-ui/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Svgr](https://react-svgr.com/)
 
