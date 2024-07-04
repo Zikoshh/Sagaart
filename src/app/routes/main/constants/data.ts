@@ -2,6 +2,7 @@ import paintingImg from '../assets/painting.jpeg';
 import graphicsImg from '../assets/graphics.jpeg';
 import photographyImg from '../assets/photography.jpeg';
 import artistsImg from '../assets/artists.jpeg';
+import digitalImg from '../assets/digital.jpeg';
 
 const subscriptionData = {
   title: 'Откройте ценность исскуства!',
@@ -51,6 +52,7 @@ const cardsData = [
   { title: 'Графика', rout: '/catalog/graphics', img: graphicsImg },
   { title: 'Фотография', rout: '/catalog/photography', img: photographyImg },
   { title: 'Художники', rout: '/catalog/artists', img: artistsImg },
+  { title: 'Digital', rout: '/catalog', img: digitalImg },
 ];
 
 const catalogUrl = '/catalog';

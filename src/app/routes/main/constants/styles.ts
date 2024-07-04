@@ -43,12 +43,10 @@ const styles = {
     rowGap: '16px',
   },
   cardsContainer: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    columnGap: '40px',
-    gridTemplateRows: '471px',
+    width: '100%',
+    height: '471px',
   },
-  card: { position: 'relative' },
+  card: { position: 'relative', height: '100%' },
   cardImg: {
     objectFit: 'cover',
     objectPosition: 'center',
